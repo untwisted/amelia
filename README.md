@@ -8,20 +8,20 @@ Install
 
 This is a short script to run the latest version of ameliabot.
 
-cd /tmp
-
-git clone git://git.code.sf.net/p/untwisted/code untwisted-code
-cd untwisted-code
-python setupp.py install
-
-git clone git://git.code.sf.net/p/uxirc/code uxirc-code
-cd uxirc-code
-python setup.py install
-
-git clone https://github.com/iogf/ameliabot.git ameliabot-code
-cd ameliabot-code
-python setup.py install
-
+    cd /tmp
+    
+    git clone git://git.code.sf.net/p/untwisted/code untwisted-code
+    cd untwisted-code
+    python setupp.py install
+    
+    git clone git://git.code.sf.net/p/uxirc/code uxirc-code
+    cd uxirc-code
+    python setup.py install
+    
+    git clone https://github.com/iogf/ameliabot.git ameliabot-code
+    cd ameliabot-code
+    python setup.py install
+    
 That is all. 
 
 Run ameliabot
@@ -319,6 +319,7 @@ I hope you enjoy amelia as i enjoyed.
 Old repository
 ==============
 http://ameliabot.sourceforge.net/
+
 
 
 
