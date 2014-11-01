@@ -316,6 +316,9 @@ So if you want a handle to be called on '372' just map it with xmap.
 I hope you enjoy amelia as i enjoyed.
 
 
+Old repository
+==============
+http://ameliabot.sourceforge.net/
 
 
 
