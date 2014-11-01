@@ -1,0 +1,104 @@
+from ameliabot.core import connect
+
+import sys
+
+# You can place your plugins at 
+# ~/.amelia
+# To use them inside this file just do.
+# import plugin_package_name
+# or
+# import plugin_name
+from os.path import expanduser
+sys.path.append('%s/.amelia/' % expanduser('~'))
+               
+def PLUGIN_SCHEME(server):
+    """
+    These are all ameliabot built in plugins.
+    You can have more than one scheme for irc networks.
+
+    Just implement new PLUGIN_SCHEME functions then pass
+    then to connect.
+    """
+
+    from ameliabot.plugins.ircshare import dccs
+    dccs.Send(server, '~/ircshare')
+
+    from ameliabot.plugins.ircshare import dccg
+    dccg.Get(server, '~/ircshare')
+
+    from ameliabot.plugins.ircshare import booklist
+    booklist.BookList(server, '~/ircshare')
+
+    from ameliabot.plugins import laugh
+    laugh.install(server)
+
+    from ameliabot.plugins import say
+    say.install(server)
+
+    from ameliabot.plugins import join
+    join.install(server)
+
+    from ameliabot.plugins import snarf
+    snarf.install(server)
+
+    from ameliabot.plugins import polyglot
+    polyglot.install(server)
+
+    from ameliabot.plugins import seen
+    seen.Seen(server)
+
+    from ameliabot.plugins import pipe
+    pipe.install(server)
+
+    from ameliabot.plugins import note
+    note.install(server)
+
+    from ameliabot.plugins import calc
+    calc.install(server)
+
+    from ameliabot.plugins.quote import quote
+    quote.install(server)
+
+    from ameliabot.plugins import survive
+    survive.install(server)
+
+    from ameliabot.plugins import logmsg
+    logmsg.LogMsg(server, '/home/tau')
+
+    from ameliabot.plugins import boxenv
+    boxenv.BoxEnv(server, 'haskell', '@haskell', '', '@')
+    boxenv.BoxEnv(server, 'python', '@python', '', '@')
+    boxenv.BoxEnv(server, 'c', '@c', '', '@')
+
+    from ameliabot.plugins import ircadm
+    ircadm.install(server)
+
+    from ameliabot.plugins.quote import auto_quote
+    auto_quote.install(server, ['#vy'])
+
+
+# The channel where the bot will connect to.
+CHANNEL_SCHEME = ['#ameliabot', '#vy', '##calculus']
+
+# It tells the bot to connect to freenod then use the plugins
+# that we have defined in PLUGIN_SCHEME handle.
+# It will join the channels #ameliabot, #vy and ##calculus at irc.freenode.org
+server = connect('irc.freenode.org', 6667, 'ameliabot', 
+              'untwistedbot euler euler :Ameliabot', 'nick_passwd',
+              'bot_passwd', CHANNEL_SCHEME, PLUGIN_SCHEME)
+
+
+# The same way we did above. The interesting thing is we can have as many connections as we want.
+CHANNEL_SCHEME = ['#cine']
+
+# It will use the same plugin scheme but we could define a different handle for the plugins.
+server = connect('irc.virtualife.com.br', 6667, 'ameliabot', 
+              'untwistedbot euler euler :Ameliabot', 'nick_passwd',
+              'bot_passwd', CHANNEL_SCHEME, PLUGIN_SCHEME)
+
+
+
+
+
+
+

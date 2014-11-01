@@ -1,0 +1,7 @@
+<Tau>http://www.emporiumsaopaulo.com.br/produto.asp?cid=121&gid=986&gondola=Frios&pid=15492
+<Tau>.title
+<ameliabot></title> <link rel="stylesheet" type="text/css" href="esp.css"> <script language="javascript" type="text/javascript" src="esp.js">
+
+ameliabot failing to catch an empty title.
+i should try STR_TITLE = '<title>(?P<data>.+?)</.+?>'
+

@@ -1,0 +1,16 @@
+#! /usr/bin/env python
+
+from optparse import OptionParser
+from ameliabot import ircbot
+from untwisted.network import core
+
+parser = OptionParser()
+parser.add_option("-i", "--init", action="callback", callback=lambda *args: ircbot.init())
+
+parser.add_option("-r", "--run", action="callback", callback=lambda *args: ircbot.run())
+
+(opt, args) = parser.parse_args()
+
+
+
+
