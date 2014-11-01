@@ -21,10 +21,10 @@ def PLUGIN_SCHEME(server):
     """
 
     from ameliabot.plugins.ircshare import dccs
-    dccs.Send(server, '~/ircshare')
+    dccs.Send(server, '/path/ircshare')
 
     from ameliabot.plugins.ircshare import dccg
-    dccg.Get(server, '~/ircshare')
+    dccg.Get(server, '/path/ircshare')
 
     from ameliabot.plugins.ircshare import booklist
     booklist.BookList(server, '~/ircshare')
@@ -40,6 +40,9 @@ def PLUGIN_SCHEME(server):
 
     from ameliabot.plugins import snarf
     snarf.install(server)
+
+    from ameliabot.plugins import idiom
+    idiom.install(server)
 
     from ameliabot.plugins import polyglot
     polyglot.install(server)
@@ -65,10 +68,8 @@ def PLUGIN_SCHEME(server):
     from ameliabot.plugins import logmsg
     logmsg.LogMsg(server, '/home/tau')
 
-    from ameliabot.plugins import boxenv
-    boxenv.BoxEnv(server, 'haskell', '@haskell', '', '@')
-    boxenv.BoxEnv(server, 'python', '@python', '', '@')
-    boxenv.BoxEnv(server, 'c', '@c', '', '@')
+    from ameliabot.plugins import codenv
+    codenv.install(server, '@run', '@end')
 
     from ameliabot.plugins import ircadm
     ircadm.install(server)
@@ -95,6 +96,9 @@ CHANNEL_SCHEME = ['#cine']
 server = connect('irc.virtualife.com.br', 6667, 'ameliabot', 
               'untwistedbot euler euler :Ameliabot', 'nick_passwd',
               'bot_passwd', CHANNEL_SCHEME, PLUGIN_SCHEME)
+
+
+
 
 
 

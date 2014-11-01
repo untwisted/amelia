@@ -22,6 +22,9 @@ This is a short script to run the latest version of ameliabot.
     cd ameliabot-code
     python setup.py install
     
+
+It runs on python2.
+
 That is all. 
 
 Run ameliabot
@@ -64,10 +67,10 @@ want ameliabot to connect to.
         """
     
         from ameliabot.plugins.ircshare import dccs
-        dccs.Send(server, '~/ircshare')
+        dccs.Send(server, '/path/ircshare')
     
         from ameliabot.plugins.ircshare import dccg
-        dccg.Get(server, '~/ircshare')
+        dccg.Get(server, '/path/ircshare')
     
         from ameliabot.plugins.ircshare import booklist
         booklist.BookList(server, '~/ircshare')
@@ -75,11 +78,17 @@ want ameliabot to connect to.
         from ameliabot.plugins import laugh
         laugh.install(server)
     
-        from ameliabot.plugins import math
-        math.install(server)
+        # from ameliabot.plugins import say
+        # say.install(server)
+    
+        from ameliabot.plugins import join
+        join.install(server)
     
         from ameliabot.plugins import snarf
         snarf.install(server)
+    
+        from ameliabot.plugins import idiom
+        idiom.install(server)
     
         from ameliabot.plugins import polyglot
         polyglot.install(server)
@@ -105,10 +114,8 @@ want ameliabot to connect to.
         from ameliabot.plugins import logmsg
         logmsg.LogMsg(server, '/home/tau')
     
-        from ameliabot.plugins import boxenv
-        boxenv.BoxEnv(server, 'haskell', '@haskell', '', '@')
-        boxenv.BoxEnv(server, 'python', '@python', '', '@')
-        boxenv.BoxEnv(server, 'c', '@c', '', '@')
+        from ameliabot.plugins import codenv
+        codenv.install(server, '@run', '@end')
     
         from ameliabot.plugins import ircadm
         ircadm.install(server)
@@ -135,8 +142,6 @@ want ameliabot to connect to.
     server = connect('irc.virtualife.com.br', 6667, 'ameliabot', 
                   'untwistedbot euler euler :Ameliabot', 'nick_passwd',
                   'bot_passwd', CHANNEL_SCHEME, PLUGIN_SCHEME)
-    
-
 
 
 Now you can edit this file the way you need.
@@ -158,17 +163,17 @@ The standard plugins
     <ameliabot> integral sin(x^2) x dx = -1/2 cos(x^2)+constant
 
     # This one permits executing code at codepad.org.
-    from ameliabot.plugins import boxenv
+    from ameliabot.plugins import codenv
 
-    # Example:
-    <Tau>@python
+    <Tau>@run python
     <Tau>def alpha():
-    <Tau>   print 'this is cool.'
+    <Tau>   print 'alpha'
     <Tau>alpha()
-    <Tau>@
-    <ameliabot>this is cool.
-
+    <Tau>@end
+    <ameliabot> alpha
+    
     # This one can translate people phrases, it is a perfect translator for irc.
+
     from ameliabot.plugins import polyglot
 
     Example:
@@ -319,6 +324,8 @@ I hope you enjoy amelia as i enjoyed.
 Old repository
 ==============
 http://ameliabot.sourceforge.net/
+
+
 
 
 
