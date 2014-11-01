@@ -67,13 +67,16 @@ want ameliabot to connect to.
         """
     
         from ameliabot.plugins.ircshare import dccs
+        # Don't forget to create your folder to share content.
         dccs.Send(server, '/path/ircshare')
     
         from ameliabot.plugins.ircshare import dccg
+        # Don't forget to create your folder to share content.
         dccg.Get(server, '/path/ircshare')
     
         from ameliabot.plugins.ircshare import booklist
-        booklist.BookList(server, '~/ircshare')
+        # Don't forget to create your folder to share content.
+        booklist.BookList(server, '/path/ircshare')
     
         from ameliabot.plugins import laugh
         laugh.install(server)
@@ -324,6 +327,7 @@ I hope you enjoy amelia as i enjoyed.
 Old repository
 ==============
 http://ameliabot.sourceforge.net/
+
 
 
 

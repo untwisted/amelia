@@ -27,7 +27,7 @@ def PLUGIN_SCHEME(server):
     dccg.Get(server, '/path/ircshare')
 
     from ameliabot.plugins.ircshare import booklist
-    booklist.BookList(server, '~/ircshare')
+    booklist.BookList(server, '/path/ircshare')
 
     from ameliabot.plugins import laugh
     laugh.install(server)
@@ -96,6 +96,7 @@ CHANNEL_SCHEME = ['#cine']
 server = connect('irc.virtualife.com.br', 6667, 'ameliabot', 
               'untwistedbot euler euler :Ameliabot', 'nick_passwd',
               'bot_passwd', CHANNEL_SCHEME, PLUGIN_SCHEME)
+
 
 
 
