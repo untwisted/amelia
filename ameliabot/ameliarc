@@ -32,8 +32,8 @@ def PLUGIN_SCHEME(server):
     from ameliabot.plugins import laugh
     laugh.install(server)
 
-    from ameliabot.plugins import say
-    say.install(server)
+    # from ameliabot.plugins import say
+    # say.install(server)
 
     from ameliabot.plugins import join
     join.install(server)
@@ -95,6 +95,7 @@ CHANNEL_SCHEME = ['#cine']
 server = connect('irc.virtualife.com.br', 6667, 'ameliabot', 
               'untwistedbot euler euler :Ameliabot', 'nick_passwd',
               'bot_passwd', CHANNEL_SCHEME, PLUGIN_SCHEME)
+
 
 
 
