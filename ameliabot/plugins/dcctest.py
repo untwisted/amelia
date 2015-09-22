@@ -1,4 +1,3 @@
-from uxirc.misc import *
 from untwisted.network import xmap
 
 def install(server):
@@ -6,4 +5,6 @@ def install(server):
 
 def dcc_get(*args):
     print 'args', args
+
+
 

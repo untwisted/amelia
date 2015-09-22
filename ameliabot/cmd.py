@@ -15,18 +15,9 @@ def install(server):
 def split(server, nick, user, host, target, msg, event):
     if msg.startswith('.') or msg.startswith('@'):
         cmdlist = findall(ARG_REG, msg)
-        spawn(  
-               server,
-               (event, cmdlist[0]), 
-               (
-                 nick,
-                 user, 
-                 host,
-                 target,
-                 msg,
-               ),
-               *cmdlist[1:]
-             )
+        spawn(server, (event, cmdlist[0]), (
+                 nick, user, host, target, msg,), *cmdlist[1:])
     
+
 
 

@@ -13,9 +13,9 @@ should send a request to send a file to the one who issued the command.
 
 from untwisted.network import *
 from untwisted.utils.stdio import CLOSE, CONNECT_ERR
-from uxirc.misc import *
+from untwisted.plugins.irc import *
+from untwisted.tools import ip_to_long
 from os.path import getsize
-from uxirc.dcc import *
 from socket import error
 
 HEADER = '\001DCC SEND %s %s %s %s\001' 
@@ -25,33 +25,20 @@ class Send(object):
         self.folder = folder
         xmap(server, ('PRIVCHAN', '.dcc_send'), self.dcc_send)
 
-    def dcc_send(self, 
-                        server, 
-                        (
-                            nick, user, 
-                            host, target, 
-                            msg,
-                        ),
-                        filename,
-                        port
-                    ):
+    def dcc_send(self, server, (nick, user, 
+                            host, target, msg), filename, port):
     
         path = '%s/%s' % (self.folder, filename)
-
         size = getsize(path)
-        fd = open(path, 'rb')
+        fd   = open(path, 'rb')
     
         try:
             dccserv = DccServer(fd, int(port))
         except error:
             send_msg(server, nick, "It couldn't listen on the port")
         else:
-            request = HEADER % (filename, 
-                                ip_to_long(server.myaddr), 
-                                port, 
-                                size)
-        
-        
+            request = HEADER % (filename, ip_to_long(server.myaddr), port, size)
+
             send_msg(server, nick, request)
         
             def is_done(dccserv, client, msg):
@@ -71,5 +58,8 @@ class Send(object):
             xmap(dccserv, TIMEOUT, is_done, None, "TIMEOUT. Server is down.")
         
         
+
+
+
 
 

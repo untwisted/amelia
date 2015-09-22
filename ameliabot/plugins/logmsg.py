@@ -13,8 +13,6 @@ Where those are file names.
 So, whenever somebody types on #coffee it will be appended
 to #coffee file.
 """
-
-from uxirc.misc import *
 from time import asctime
 from untwisted.network import xmap
 
@@ -39,4 +37,5 @@ class LogMsg(object):
     def store_user(self, server, nick, user, host, target, msg):
         with open('%s/%s' % (self.folder, nick), 'a+') as fd:
             fd.write('(%s)<%s> %s\n' % (asctime(), nick, msg))
+
 

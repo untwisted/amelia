@@ -1,14 +1,12 @@
-from untwisted.network import *
+from untwisted.network import Spin, xmap
 from untwisted.utils.stdio import *
 from untwisted.utils.shrug import *
-from socket import *
-from uxirc.misc import *
-from uxirc import irc, ctcp
-
-import adm
-import cmd
-import profile
-import priv
+from untwisted.plugins.irc import *
+from socket import socket, AF_INET, SOCK_STREAM
+from ameliabot import adm
+from ameliabot import cmd
+from ameliabot import profile
+from ameliabot import priv
 
 def connect(servaddr, port, nick, user, nick_passwd, adm_passwd, chan_list, plugmap):
     sock = socket(AF_INET, SOCK_STREAM)
@@ -27,9 +25,8 @@ def connect(servaddr, port, nick, user, nick_passwd, adm_passwd, chan_list, plug
         Stdout(server)
         Shrug(server)
 
-        irc.install(server)
-        ctcp.install(server)
-        #Install the bot system of commands.
+        Irc(server)
+        CTCP(server)
         priv.install(server)
         cmd.install(server)
         profile.install(server)
@@ -64,3 +61,5 @@ def connect(servaddr, port, nick, user, nick_passwd, adm_passwd, chan_list, plug
     server.connect_ex((ip, port))
 
     return server
+
+

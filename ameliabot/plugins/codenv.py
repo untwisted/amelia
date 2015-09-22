@@ -11,7 +11,7 @@ Usage:
 """
 
 from ameliabot.utils import codepad
-from uxirc.misc import *
+from untwisted.plugins.irc import send_msg
 from untwisted.network import hold, xmap
 
 class Codenv(object):
@@ -41,5 +41,6 @@ class Codenv(object):
 
 
 install = Codenv
+
 
 

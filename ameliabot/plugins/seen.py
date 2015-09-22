@@ -9,8 +9,7 @@ Usage:
 
 It saves the last time the person joined a channel where the bot is in.
 """
-
-from uxirc.misc import *
+from untwisted.plugins.irc import send_msg
 from untwisted.network import xmap
 import time
 
@@ -37,11 +36,10 @@ class Seen(object):
             min     = int(rate / 60)
             sec     = int(rate % 60)
 
-            send_msg(
-                        server, 
-                        target, 
-                        '%s last seen %s:%s:%s ago.' % (one, hour, min, sec)
-                    )
+            send_msg(server, target, 
+                '%s last seen %s:%s:%s ago.' % (one, hour, min, sec))
+
+
 
 
 

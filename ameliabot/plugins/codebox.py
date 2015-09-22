@@ -11,7 +11,7 @@ Usage:
 """
 
 from ameliabot.utils import codepad
-from uxirc.misc import *
+from untwisted.plugins.irc import send_msg
 from untwisted.network import xmap
 
 class Codebox(object):
@@ -28,6 +28,7 @@ class Codebox(object):
             send_msg(server, target, output)
         else:
             send_msg(server, target, url)
+
 
 
 

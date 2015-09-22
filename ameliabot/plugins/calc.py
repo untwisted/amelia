@@ -8,7 +8,7 @@ Usage:
 """
 
 from ameliabot.utils.mathapi import MathApi
-from uxirc.misc import *
+from untwisted.plugins.irc import send_msg
 from untwisted.network import xmap
 
 source = MathApi('4WERXG-VAGETKREGX')
@@ -16,20 +16,13 @@ source = MathApi('4WERXG-VAGETKREGX')
 def install(server):
     xmap(server, ('PRIVCHAN', '.euler'), euler)
 
-def euler(
-            server, 
-            (
-                nick, user, 
-                host, target, 
-                msg,
-            ),
-            *args
-       ):
+def euler(server, (nick, user, 
+                host, target, msg,), *args):
 
-    data = ' '.join(args)
-
+    data   = ' '.join(args)
     output = source.submit(data)
 
     send_msg(server, target, output)
+
 
 

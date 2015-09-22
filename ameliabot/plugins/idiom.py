@@ -12,29 +12,23 @@ You need to know the google language key. In this example pt stands for portugue
 and en stands for english.
 """
 
-from uxirc.misc import *
 from ameliabot.utils.google import GoogleTranslator, shape
 from untwisted.network import xmap
+from untwisted.plugins.irc import send_msg
 
 source = GoogleTranslator()
 
 def install(server):
     xmap(server, ('PRIVCHAN', '.g'), translate)
 
-def translate(
-                server, 
-                (
-                    nick, user, 
-                    host, target, 
-                    msg,
-                ),
-                lang_x, lang_y, 
-                *args
-             ):
+def translate(server, (nick, user, host, target, msg, ),
+                lang_x, lang_y, *args):
 
     data = ' '.join(args)
     data = source.translate(data, lang_x, lang_y)
     data = shape(data)
     send_msg(server, target, data)
+
+
 
 

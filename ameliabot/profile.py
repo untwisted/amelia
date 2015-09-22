@@ -3,7 +3,7 @@
     house myaddr variable which contains our local ip.
 """
 
-from uxirc.misc import *
+from untwisted.plugins.irc import send_cmd
 from untwisted.network import hold, xmap
 
 def install(server):
@@ -23,4 +23,6 @@ def _376(server, servaddr, nick, msg):
 def nick(server, nick_x, user, host, nick_y):
     if server.nick == nick_x:
         server.nick = nick_y
+
+
 

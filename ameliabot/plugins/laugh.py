@@ -10,7 +10,7 @@ Usage:
 <yu>ioaiuohea
 """
 
-from uxirc.misc import *
+from untwisted.plugins.irc import send_msg
 from re import search, compile
 from random import choice, randint
 from untwisted.network import xmap
@@ -25,12 +25,13 @@ def install(server):
     xmap(server, 'PRIVCHAN', track_laugh)
 
 def track_laugh(server, nick, user, host, target, msg):
-    if search(LAUGH_REG, msg):
-        length = randint(MIN_LENGTH, MAX_LENGTH)
-        #############
-        data = ''
-        ############
-        for ind in range(0, length):
-            data = data + choice(LETTER_TUPLE)
-        ############
-        send_msg(server, target, data)
+    if not search(LAUGH_REG, msg): return
+
+    length = randint(MIN_LENGTH, MAX_LENGTH)
+    data   = ''
+
+    for ind in range(0, length):
+        data = data + choice(LETTER_TUPLE)
+    send_msg(server, target, data)
+
+

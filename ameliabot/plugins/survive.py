@@ -12,13 +12,9 @@ def install(server):
     xmap(server, CLOSE, reconnect)
 
 def reconnect(server, err):
-    connect(server.servaddr, 
-            server.port,
-            server.nick,
-            server.user,
-            server.nick_passwd,
-            server.adm_passwd,
-            server.chan_list,
-            server.plugmap)
+    connect(server.servaddr, server.port, server.nick,
+    server.user, server.nick_passwd, server.adm_passwd, server.chan_list, 
+    server.plugmap)
+
 
 

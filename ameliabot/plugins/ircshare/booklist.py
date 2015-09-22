@@ -10,8 +10,8 @@ Usage:
 """
 
 from ameliabot.utils import codepad
-from uxirc.misc import *
 from untwisted.network import xmap
+from untwisted.plugins.irc import send_msg
 
 import os
 
@@ -37,4 +37,5 @@ class BookList(object):
         addr, url = codepad.post(content, '') 
         send_msg(server, target, url)
         
+
 

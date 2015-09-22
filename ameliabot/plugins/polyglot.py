@@ -20,8 +20,8 @@ but you would have to figure it out.
 """
 
 from untwisted.network import spawn, xmap, zmap
-from uxirc.misc import *
 from ameliabot.utils.google import GoogleTranslator, shape
+from untwisted.plugins.irc import send_msg
 
 source = GoogleTranslator()
 
@@ -36,23 +36,14 @@ def add(server, user, lang_x, lang_y, host):
 def rm(server, user, lang_x, lang_y, host):
     zmap(server, host, listen, lang_x, lang_y)
 
-def listen(
-            server, nick, 
-            user, target, 
-            msg, lang_x, 
-            lang_y 
-          ):
-
+def listen(server, nick, user, target, msg, lang_x, lang_y):
     data = source.translate(msg, lang_x, lang_y) 
     data = shape(data)
     send_msg(server, target, '%s %s' % (nick, data))
 
-def split(
-            server, nick, 
-            user, host, 
-            target, msg,
-         ):
-
+def split(server, nick, user, host, target, msg):
     spawn(server, host, nick, user, target, msg)
+
+
 
 

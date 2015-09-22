@@ -9,10 +9,10 @@ Usage:
 
 from untwisted.task import sched
 from untwisted.network import xmap
-from uxirc.misc import *
 from random import *
 from re import split
 from os.path import dirname, join
+from untwisted.plugins.irc import send_msg
 
 def install(server):
     fd   = open(join(dirname(__file__), 'quote_database'), 'r')
@@ -23,18 +23,13 @@ def install(server):
     
     xmap(server, ('PRIVCHAN', '.inspire'), send_quote, list_quote)
 
-def send_quote(
-                server, 
-                (
-                    nick, user, 
-                    host, target, 
-                    msg,
-                ),
-                list_quote
-           ):    
+def send_quote(server, (nick, user, host, target, 
+                                        msg), list_quote):    
 
     data = choice(list_quote)
     send_msg(server, target, data)
+
+
 
 
 

@@ -1,7 +1,7 @@
-from utils.misc import *
 from time import asctime
 from random import choice
 from untwisted.network import xmap
+from untwisted.plugins.irc import send_msg
 
 FILE_NAME = './plugins/spam/database'
 
@@ -11,22 +11,20 @@ with open(FILE_NAME, 'r') as fd:
    
 pmed = list()
 
+# The list of chans whose users shouldnt be spammed.
 chan_list = ['#bottt']
 
 def install(server):
     xmap(server, 'PRIVCHAN', send_spam)
 
-def send_spam(
-                server, 
-                nick, user, 
-                host, target, 
-                msg,
-              ):
+def send_spam(server, nick, user, host, 
+                            target, msg):
     
-    target = target.lower()
+    if host in pmed or target.lower() in chan_list: 
+        return
 
-    if not host in pmed and target in chan_list: 
-        msg = choice(db)
-        pmed.append(host)
-        send_msg(server, nick, msg)
-    ###########
+    msg = choice(db)
+    pmed.append(host)
+    send_msg(server, nick, msg)
+
+

@@ -29,8 +29,8 @@ On #&math again.
 <Tau>hehe
 """
 
-from uxirc.misc import *
 from untwisted.network import xmap
+from untwisted.plugins.irc import send_msg
 
 mapping = dict()
 
@@ -39,45 +39,30 @@ def install(server):
     xmap(server, ('PRIVCHAN', '.pipe_rm'), pipe_rm)
     xmap(server, 'PRIVCHAN', pipe_chan)
 
-def pipe_add(
-                server, 
-                (
-                    nick, user, 
-                    host, target, 
-                    msg,
-                ),
-                chan_x, chan_y
-             ):
+def pipe_add(server, (nick, user, host, target, 
+               msg, ), chan_x, chan_y):
 
     chan_x, chan_y = chan_x.upper(), chan_y.upper()
-
     if not mapping.has_key((server, chan_x)):
         mapping[(server, chan_x)] = list()
-    #####################
     mapping[(server, chan_x)].append(chan_y)
 
-def pipe_rm(
-                server, 
-                (
-                    nick, user, 
-                    host, target, 
-                    msg,
-                ),
-                chan_x, chan_y
-             ):
+def pipe_rm(server, (nick, user, 
+                    host, target, msg,), chan_x, chan_y):
 
     chan_x, chan_y = chan_x.upper(), chan_y.upper()
-
     mapping[(server, chan_x)].remove(chan_y)
 
-def pipe_chan(
-                server, nick, 
-                user, host, 
-                target, msg,
-             ):
-
+def pipe_chan(server, nick, user, host, target, msg,):
     chan_list = mapping.get((server, target.upper()))
-    if chan_list:
-        for ind in chan_list:
-            send_msg(server, ind, '(%s)%s %s' % (target, nick, msg))
+    if not chan_list: return
+
+    for ind in chan_list:
+        send_msg(server, ind, '(%s)%s %s' % (target, nick, msg))
+
+
+
+
+
+
 

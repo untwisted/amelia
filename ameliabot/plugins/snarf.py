@@ -9,8 +9,7 @@ Usage:
 <yu> ameliabot / Code / [bfc349]
 
 """
-
-from uxirc.misc import *
+from untwisted.plugins.irc import send_msg
 from ameliabot.utils.title import Title
 from re import search, compile, sub
 from untwisted.network import xmap
@@ -28,13 +27,14 @@ def install(server):
 
 def track_title(server, nick, user, host, target, msg):
     rex = search(REG_LINK, msg)
-    #######
-    if rex:
-        url = rex.group('address')
-        page_title = source.get_title(url)
-        page_title = sub(REG_BLANK, ' ', page_title) 
-        send_msg(server, target, page_title)
-    #######
+    if not rex: return
+
+    url        = rex.group('address')
+    page_title = source.get_title(url)
+    page_title = sub(REG_BLANK, ' ', page_title) 
+    send_msg(server, target, page_title)
+
+
 
 
 

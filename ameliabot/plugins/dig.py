@@ -10,7 +10,7 @@ Usage:
 
 from random import choice
 from ameliabot.utils.research import Research
-from uxirc.misc import *
+from untwisted.plugins.irc import send_msg
 from untwisted.network import xmap
 
 base = Research()
@@ -18,23 +18,15 @@ base = Research()
 def install(server):
     xmap(server, ('PRIVCHAN', '.find'), find)
 
-def find(
-            server, 
-            (
-                nick, user, 
-                host, target, 
-                msg,
-            ),
-            *args 
-       ):
+def find(server, (nick, user, host, target, 
+                msg,), *args ):
 
-    data = ' '.join(args)
+    data  = ' '.join(args)
     space = base.quick_search(v='0.1', q=data, safe='high')
-    url = choice(space)
+    url   = choice(space)
+    send_msg(server, target, str(url))
 
-    #sends to the target
-    #the target would be the channel
-    send_msg(server, target, url)
+
 
 
 
