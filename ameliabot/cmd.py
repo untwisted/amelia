@@ -1,23 +1,44 @@
-from untwisted.network import spawn, xmap
-from re import compile, findall
+from re import split, match, compile
 
-ARG_STR = "[^ ]+"
-ARG_REG = compile(ARG_STR)
+def tokenize(data):
+    """
+    """
 
-#This regex supports "alpha beta gama" parameters between ""
-#ARG_STR = '[^" ]+|"[^"]+"'
-#ARG_REG = re.compile(ARG_STR)
+    data = split(' +', data)
+    return iter(data)
 
-def install(server):
-    xmap(server, 'PRIVCHAN', split, 'PRIVCHAN')
-    xmap(server, 'PRIVUSER', split, 'PRIVUSER') 
+def build(seq, reg=''):
+    """
+    """
 
-def split(server, nick, user, host, target, msg, event):
-    if msg.startswith('.') or msg.startswith('@'):
-        cmdlist = findall(ARG_REG, msg)
-        spawn(server, (event, cmdlist[0]), (
-                 nick, user, host, target, msg,), *cmdlist[1:])
-    
+    reg = seq.next()
+    for ind in seq:
+        reg = fmt(reg, ind)
+    return reg
+
+def fmt(reg, chk):
+    """
+    """
+
+    if chk.startswith('-'): 
+        return '%s %s' % (reg, chk)
+    else: 
+        return '%s (?P<%s>.+)' % (reg, chk)
+
+def command(template):
+    regex = build(tokenize(template))
+    def shell(func):
+        def handle(*args):
+            struct = match(regex, args[-1])
+            if struct: func(*args, **struct.groupdict())
+        return handle
+    return shell
+
+
+
+
+
+
 
 
 

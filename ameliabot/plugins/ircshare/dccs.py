@@ -23,7 +23,7 @@ HEADER = '\001DCC SEND %s %s %s %s\001'
 class Send(object):
     def __init__(self, server, folder):
         self.folder = folder
-        xmap(server, ('PRIVCHAN', '.dcc_send'), self.dcc_send)
+        xmap(server, ('CMSG', '.dcc_send'), self.dcc_send)
 
     def dcc_send(self, server, (nick, user, 
                             host, target, msg), filename, port):
@@ -58,6 +58,7 @@ class Send(object):
             xmap(dccserv, TIMEOUT, is_done, None, "TIMEOUT. Server is down.")
         
         
+
 
 
 

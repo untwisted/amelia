@@ -23,7 +23,7 @@ STR_BLANK = r'\s+'
 REG_BLANK = compile(STR_BLANK)
 
 def install(server):
-    xmap(server, 'PRIVCHAN', track_title)
+    xmap(server, 'CMSG', track_title)
 
 def track_title(server, nick, user, host, target, msg):
     rex = search(REG_LINK, msg)
@@ -33,6 +33,7 @@ def track_title(server, nick, user, host, target, msg):
     page_title = source.get_title(url)
     page_title = sub(REG_BLANK, ' ', page_title) 
     send_msg(server, target, page_title)
+
 
 
 

@@ -17,8 +17,8 @@ class Seen(object):
     def __init__(self, server):
         self.database = dict()
 
-        xmap(server, 'PRIVMSG', self.record)
-        xmap(server, ('PRIVCHAN', '.seen'), self.check)
+        xmap(server, 'CMSG', self.record)
+        xmap(server, ('CMSG', '.seen'), self.check)
 
     def record(self, server, nick, user, host, target, msg):
         self.database[nick.upper()] = time.time()
@@ -38,6 +38,7 @@ class Seen(object):
 
             send_msg(server, target, 
                 '%s last seen %s:%s:%s ago.' % (one, hour, min, sec))
+
 
 
 

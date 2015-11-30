@@ -20,11 +20,12 @@ class Codenv(object):
         self.start_tag = start_tag
         self.end_tag   = end_tag
 
-        xmap(server, ('PRIVCHAN', self.start_tag), self.proc)
+        xmap(server, ('CMSG', self.start_tag), self.process)
 
-    def proc(self, server, (nick, user, host, target, msg), lang):
+    def process(self, server, (nick, user, host, target, msg), lang):
         code = ''
-        flag = hold(server, 'PRIVCHAN')
+        flag = hold(server, 'CMSG')
+
         while True:
             event, args = yield flag 
             if args[4] == target and args[3] == host:
@@ -41,6 +42,8 @@ class Codenv(object):
 
 
 install = Codenv
+
+
 
 
 

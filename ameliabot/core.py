@@ -4,9 +4,7 @@ from untwisted.utils.shrug import *
 from untwisted.plugins.irc import *
 from socket import socket, AF_INET, SOCK_STREAM
 from ameliabot import adm
-from ameliabot import cmd
 from ameliabot import profile
-from ameliabot import priv
 
 def connect(servaddr, port, nick, user, nick_passwd, adm_passwd, chan_list, plugmap):
     sock = socket(AF_INET, SOCK_STREAM)
@@ -27,8 +25,8 @@ def connect(servaddr, port, nick, user, nick_passwd, adm_passwd, chan_list, plug
 
         Irc(server)
         CTCP(server)
-        priv.install(server)
-        cmd.install(server)
+
+        Misc(server)
         profile.install(server)
         adm.install(server)
 
@@ -59,7 +57,6 @@ def connect(servaddr, port, nick, user, nick_passwd, adm_passwd, chan_list, plug
     xmap(server, CONNECT_ERR, lambda server, err: lose(server))
 
     server.connect_ex((ip, port))
-
     return server
 
 

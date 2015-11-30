@@ -27,8 +27,8 @@ class LogMsg(object):
         """
 
         self.folder = folder
-        xmap(server, 'PRIVCHAN', self.store_chan)
-        xmap(server, 'PRIVUSER', self.store_user)
+        xmap(server, 'CMSG', self.store_chan)
+        xmap(server, 'PMSG', self.store_user)
 
     def store_chan(self, server, nick, user, host, target, msg):
         with open('%s/%s' % (self.folder, target), 'a+') as fd:
@@ -37,5 +37,6 @@ class LogMsg(object):
     def store_user(self, server, nick, user, host, target, msg):
         with open('%s/%s' % (self.folder, nick), 'a+') as fd:
             fd.write('(%s)<%s> %s\n' % (asctime(), nick, msg))
+
 
 

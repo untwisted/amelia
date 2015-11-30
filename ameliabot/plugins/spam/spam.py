@@ -15,7 +15,7 @@ pmed = list()
 chan_list = ['#bottt']
 
 def install(server):
-    xmap(server, 'PRIVCHAN', send_spam)
+    xmap(server, 'CMSG', send_spam)
 
 def send_spam(server, nick, user, host, 
                             target, msg):
@@ -26,5 +26,6 @@ def send_spam(server, nick, user, host,
     msg = choice(db)
     pmed.append(host)
     send_msg(server, nick, msg)
+
 
 

@@ -20,8 +20,8 @@ from untwisted.network import xmap
 from untwisted.plugins.irc import send_msg
 
 def install(server):
-    xmap(server, ('PRIVCHAN', '.note_add'), note_add)
-    xmap(server, ('PRIVCHAN', '.note_rm'), note_rm)
+    xmap(server, ('CMSG', '.note_add'), note_add)
+    xmap(server, ('CMSG', '.note_rm'), note_rm)
 
 def note_add(server, (nick, user, 
                     host, target, msg, ), inc, to, *args):
@@ -33,6 +33,7 @@ def note_rm(server, (nick, user, host, target, msg,), inc):
 
 def remember(server, nick, to, data):
     send_msg(server, to, '%s:%s' % (nick, data))
+
 
 
 

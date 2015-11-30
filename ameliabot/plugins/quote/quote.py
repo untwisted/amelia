@@ -21,13 +21,14 @@ def install(server):
     fd.close()
     list_quote = split('\n+', data)
     
-    xmap(server, ('PRIVCHAN', '.inspire'), send_quote, list_quote)
+    xmap(server, ('CMSG', '.inspire'), send_quote, list_quote)
 
 def send_quote(server, (nick, user, host, target, 
                                         msg), list_quote):    
 
     data = choice(list_quote)
     send_msg(server, target, data)
+
 
 
 

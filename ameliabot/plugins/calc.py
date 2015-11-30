@@ -1,28 +1,25 @@
 """
-Author: Iury O. G. Figueiredo
-Name: calc
-Description: This plugin uses wolfram alpha to perform mathematical operations.
-Usage: 
-<Tau>.euler d(x^2)/dy
-<yu>(d)/(dy)(x^2) = 0
 """
 
 from ameliabot.utils.mathapi import MathApi
 from untwisted.plugins.irc import send_msg
 from untwisted.network import xmap
+from ameliabot.cmd import command
 
-source = MathApi('4WERXG-VAGETKREGX')
+class Calculate(object):
+    def __init__(self, server, appid):
+        self.source = MathApi(appid)
+        xmap(server, 'CMSG', self.calculate)
+    
+    @command('@calc exp')
+    def calculate(self, server, nick, user, host, target, msg, exp):
+        send_msg(server, target, self.source.submit(exp))
+    
+install = Calculate
 
-def install(server):
-    xmap(server, ('PRIVCHAN', '.euler'), euler)
 
-def euler(server, (nick, user, 
-                host, target, msg,), *args):
 
-    data   = ' '.join(args)
-    output = source.submit(data)
 
-    send_msg(server, target, output)
 
 
 

@@ -1,16 +1,42 @@
 from ameliabot.core import connect
-
+##############################################################################
 import sys
 
-# You can place your plugins at 
-# ~/.amelia
+# You can place your plugins at ~/.amelia
 # To use them inside this file just do.
-# import plugin_package_name
-# or
-# import plugin_name
-from os.path import expanduser
-sys.path.append('%s/.amelia/' % expanduser('~'))
-               
+# import plugin_package_name or import plugin_name
+
+from os.path import expanduser, join
+sys.path.append(join(expanduser('~'), '.amelia'))
+##############################################################################
+# The plugin imports.
+
+# from ameliabot.plugins.ircshare import dccs
+# from ameliabot.plugins.ircshare import dccg
+# from ameliabot.plugins.ircshare import booklist
+# from ameliabot.plugins import join
+# from ameliabot.plugins import snarf
+# from ameliabot.plugins import polyglot
+# from ameliabot.plugins import seen
+# from ameliabot.plugins import pipe
+# from ameliabot.plugins import note
+# from ameliabot.plugins.quote import quote
+# from ameliabot.plugins import survive
+# from ameliabot.plugins import logmsg
+# # from ameliabot.plugins import codenv
+# from ameliabot.plugins import ircadm
+# from ameliabot.plugins.quote import auto_quote
+from ameliabot.plugins import quick_search
+from ameliabot.plugins import tell
+from ameliabot.plugins import troll
+from ameliabot.plugins import calc
+from ameliabot.plugins import translator
+
+##############################################################################
+
+# Define the set of plugins that will be available.
+# You can define a different scheme for each server.
+
 def PLUGIN_SCHEME(server):
     """
     These are all ameliabot built in plugins.
@@ -20,82 +46,48 @@ def PLUGIN_SCHEME(server):
     then to connect.
     """
 
-    from ameliabot.plugins.ircshare import dccs
-    dccs.Send(server, '/path/ircshare')
-
-    from ameliabot.plugins.ircshare import dccg
-    dccg.Get(server, '/path/ircshare')
-
-    from ameliabot.plugins.ircshare import booklist
-    booklist.BookList(server, '/path/ircshare')
-
-    from ameliabot.plugins import laugh
-    laugh.install(server)
-
-    # from ameliabot.plugins import say
+    # dccs.Send(server, '/path/ircshare')
+    # dccg.Get(server, '/path/ircshare')
+    # booklist.BookList(server, '/path/ircshare')
     # say.install(server)
+    # join.install(server)
+    # snarf.install(server)
+    # polyglot.install(server)
+    # seen.Seen(server)
+    # pipe.install(server)
+    # note.install(server)
+    # quote.install(server)
+    # survive.install(server)
+    # logmsg.LogMsg(server, '/home/tau')
+    # # codenv.install(server, '@run', '@end')
+    # ircadm.install(server)
+    # auto_quote.install(server, ['#vy'])
+    quick_search.install(server)
+    tell.install(server)
+    troll.install(server, 'aehiou', 4, 16)
+    calc.install(server, '4WERXG-VAGETKREGX')
+    translator.install(server)
 
-    from ameliabot.plugins import join
-    join.install(server)
+##############################################################################
+# The channel where the bot will stay when at freenode.
+CHANNEL_SCHEME = ['#ameliabot', '#amelia']
 
-    from ameliabot.plugins import snarf
-    snarf.install(server)
-
-    from ameliabot.plugins import idiom
-    idiom.install(server)
-
-    from ameliabot.plugins import polyglot
-    polyglot.install(server)
-
-    from ameliabot.plugins import seen
-    seen.Seen(server)
-
-    from ameliabot.plugins import pipe
-    pipe.install(server)
-
-    from ameliabot.plugins import note
-    note.install(server)
-
-    from ameliabot.plugins import calc
-    calc.install(server)
-
-    from ameliabot.plugins.quote import quote
-    quote.install(server)
-
-    from ameliabot.plugins import survive
-    survive.install(server)
-
-    from ameliabot.plugins import logmsg
-    logmsg.LogMsg(server, '/home/tau')
-
-    from ameliabot.plugins import codenv
-    codenv.install(server, '@run', '@end')
-
-    from ameliabot.plugins import ircadm
-    ircadm.install(server)
-
-    from ameliabot.plugins.quote import auto_quote
-    auto_quote.install(server, ['#vy'])
-
-
-# The channel where the bot will connect to.
-CHANNEL_SCHEME = ['#ameliabot', '#vy', '##calculus']
-
-# It tells the bot to connect to freenod then use the plugins
+# It tells the bot to connect to freenode then use the plugins
 # that we have defined in PLUGIN_SCHEME handle.
 # It will join the channels #ameliabot, #vy and ##calculus at irc.freenode.org
 server = connect('irc.freenode.org', 6667, 'ameliabot', 
               'untwistedbot euler euler :Ameliabot', 'nick_passwd',
               'bot_passwd', CHANNEL_SCHEME, PLUGIN_SCHEME)
 
+##############################################################################
 
-# The same way we did above. The interesting thing is we can have as many connections as we want.
-CHANNEL_SCHEME = ['#cine']
 
-# It will use the same plugin scheme but we could define a different handle for the plugins.
-server = connect('irc.virtualife.com.br', 6667, 'ameliabot', 
-              'untwistedbot euler euler :Ameliabot', 'nick_passwd',
-              'bot_passwd', CHANNEL_SCHEME, PLUGIN_SCHEME)
+
+
+
+
+
+
 
 
 

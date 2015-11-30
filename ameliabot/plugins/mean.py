@@ -15,7 +15,7 @@ from untwisted.network import xmap
 source = DictApi()
 
 def install(server):
-    xmap(server, ('PRIVCHAN', '.m'), translate)
+    xmap(server, ('CMSG', '.m'), translate)
 
 def translate(server, (nick, user, host, target, 
                     msg,), *args):
@@ -23,6 +23,7 @@ def translate(server, (nick, user, host, target,
     data = ' '.join(args)
     defn = source.lookup(data)
     send_msg(server, target, defn)
+
 
 
 

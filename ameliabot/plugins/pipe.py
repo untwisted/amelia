@@ -35,9 +35,9 @@ from untwisted.plugins.irc import send_msg
 mapping = dict()
 
 def install(server):
-    xmap(server, ('PRIVCHAN', '.pipe_add'), pipe_add)
-    xmap(server, ('PRIVCHAN', '.pipe_rm'), pipe_rm)
-    xmap(server, 'PRIVCHAN', pipe_chan)
+    xmap(server, ('CMSG', '.pipe_add'), pipe_add)
+    xmap(server, ('CMSG', '.pipe_rm'), pipe_rm)
+    xmap(server, 'CMSG', pipe_chan)
 
 def pipe_add(server, (nick, user, host, target, 
                msg, ), chan_x, chan_y):
@@ -59,6 +59,7 @@ def pipe_chan(server, nick, user, host, target, msg,):
 
     for ind in chan_list:
         send_msg(server, ind, '(%s)%s %s' % (target, nick, msg))
+
 
 
 

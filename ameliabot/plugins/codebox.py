@@ -17,7 +17,7 @@ from untwisted.network import xmap
 class Codebox(object):
     def __init__(self, server, max_width=512 * 3):
         self.max_width = max_width
-        xmap(server, ('PRIVCHAN', '.run'), self.run)
+        xmap(server, ('CMSG', '.run'), self.run)
 
     def run(self, server, (nick, user, host, target, msg), lang, *args):
         code = ' '.join(args)
@@ -28,6 +28,8 @@ class Codebox(object):
             send_msg(server, target, output)
         else:
             send_msg(server, target, url)
+
+
 
 
 

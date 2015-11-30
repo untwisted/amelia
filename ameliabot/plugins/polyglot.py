@@ -26,9 +26,9 @@ from untwisted.plugins.irc import send_msg
 source = GoogleTranslator()
 
 def install(server):
-    xmap(server, 'PRIVCHAN', split)
-    xmap(server, ('PRIVCHAN', '.polyglot_add'), add)
-    xmap(server, ('PRIVCHAN', '.polyglot_rm'), rm)
+    xmap(server, 'CMSG', split)
+    xmap(server, ('CMSG', '.polyglot_add'), add)
+    xmap(server, ('CMSG', '.polyglot_rm'), rm)
 
 def add(server, user, lang_x, lang_y, host):
     xmap(server, host, listen, lang_x, lang_y)
@@ -43,6 +43,7 @@ def listen(server, nick, user, target, msg, lang_x, lang_y):
 
 def split(server, nick, user, host, target, msg):
     spawn(server, host, nick, user, target, msg)
+
 
 
 
