@@ -15,7 +15,6 @@ sys.path.append(join(expanduser('~'), '.amelia'))
 # from ameliabot.plugins.ircshare import dccg
 # from ameliabot.plugins.ircshare import booklist
 # from ameliabot.plugins import join
-# from ameliabot.plugins import polyglot
 # from ameliabot.plugins.quote import quote
 # from ameliabot.plugins import survive
 # from ameliabot.plugins import logmsg
@@ -33,6 +32,7 @@ from ameliabot.plugins import codenv
 from ameliabot.plugins import note
 from ameliabot.plugins import pipe
 from ameliabot.plugins import seen
+from ameliabot.plugins import polyglot
 
 ##############################################################################
 
@@ -53,7 +53,6 @@ def PLUGIN_SCHEME(server):
     # booklist.BookList(server, '/path/ircshare')
     # say.install(server)
     # join.install(server)
-    # polyglot.install(server)
     # note.install(server)
     # quote.install(server)
     # survive.install(server)
@@ -73,6 +72,7 @@ def PLUGIN_SCHEME(server):
     note.install(server)
     pipe.install(server)
     seen.install(server)
+    polyglot.install(server)
 
 ##############################################################################
 # The channel where the bot will stay when at freenode.
