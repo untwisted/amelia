@@ -1,6 +1,5 @@
 import urllib2
 import urllib
-from web import *
 from re import compile, search, IGNORECASE,  DOTALL
 
 STR_TITLE = '<title>(?P<data>.+?)</.+?>'
@@ -28,3 +27,4 @@ class Title(object):
         return data
 
 
+install = Title
