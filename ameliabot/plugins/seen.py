@@ -1,16 +1,9 @@
 """ 
-Author: Iury O. G. Figueiredo.
-Name: seen
-Description: Used to see the last time a nick was seen.
-Usage:
-
-<Tau>.seen sailorreality
-<yu>sailorreality last seen 10:58:27 ago.
-
-It saves the last time the person joined a channel where the bot is in.
 """
+
 from untwisted.plugins.irc import send_msg
 from untwisted.network import xmap
+from ameliabot.cmd import command
 import time
 
 class Seen(object):
@@ -18,14 +11,15 @@ class Seen(object):
         self.database = dict()
 
         xmap(server, 'CMSG', self.record)
-        xmap(server, ('CMSG', '.seen'), self.check)
+        xmap(server, 'CMSG', self.check)
 
     def record(self, server, nick, user, host, target, msg):
-        self.database[nick.upper()] = time.time()
+        self.database[nick.lower()] = time.time()
 
-    def check(self, server, (nick, user, host, target, msg), one):
+    @command('@seen peer')
+    def check(self, server, nick, user, host, target, msg, peer):
         try:
-            initial = self.database[one.upper()] 
+            initial = self.database[peer.lower()] 
         except:
             send_msg(server, target, "No records for that nick.")
         else:
@@ -37,10 +31,8 @@ class Seen(object):
             sec     = int(rate % 60)
 
             send_msg(server, target, 
-                '%s last seen %s:%s:%s ago.' % (one, hour, min, sec))
+                '%s last seen %s:%s:%s ago.' % (peer, hour, min, sec))
 
 
 
-
-
-
+install = Seen
