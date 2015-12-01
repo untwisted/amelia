@@ -1,28 +1,21 @@
 """ 
-Author:Iury O. G. Figueiredo
-Name:codenv
-Description: This plugin uses codepage.org to run code.
-Usage:
-<Tau>@run python
-<Tau>print 'alpha'
-<Tau>@end
-<ameliabot> alpha
 
 """
 
-from ameliabot.utils import codepad
+import libpad
 from untwisted.plugins.irc import send_msg
 from untwisted.network import hold, xmap
 
 class Codenv(object):
-    def __init__(self, server, start_tag, end_tag, max_width=512 * 3):
+    def __init__(self, server, lang, start_tag, end_tag, max_width=512 * 3):
+        self.lang = lang
         self.max_width = max_width
         self.start_tag = start_tag
         self.end_tag   = end_tag
+        xmap(server, 'CMSG', self.process)
 
-        xmap(server, ('CMSG', self.start_tag), self.process)
-
-    def process(self, server, (nick, user, host, target, msg), lang):
+    def process(self, server, nick, user, host, target, msg):
+        if not msg == self.start_tag: return
         code = ''
         flag = hold(server, 'CMSG')
 
@@ -33,15 +26,15 @@ class Codenv(object):
                     break
                 code = code + args[5] + '\n'
             
-        url, output = codepad.sandbox(code, lang)
-
+        url, output = libpad.sandbox(code, self.lang)
         if len(output) <= self.max_width:
             send_msg(server, target, output)
         else:
             send_msg(server, target, url)
 
-
 install = Codenv
+
+
 
 
 

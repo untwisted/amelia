@@ -1,28 +1,19 @@
 """ 
-Author:Iury O. G. Figueiredo
-Name:codebox
-Description: This plugin uses codepage.org to run code.
-Usage:
-
-<Tau>.run python print [ind for ind in range(20) if ind % 2]
-<yu> [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
-<Tau>.run c int main(void) { printf("Hello World\n"); return 0; }
-<yu> Hello World
 """
 
-from ameliabot.utils import codepad
+import libpad
 from untwisted.plugins.irc import send_msg
 from untwisted.network import xmap
+from ameliabot.cmd import command
 
 class Codebox(object):
     def __init__(self, server, max_width=512 * 3):
         self.max_width = max_width
-        xmap(server, ('CMSG', '.run'), self.run)
+        xmap(server, 'CMSG', self.run)
 
-    def run(self, server, (nick, user, host, target, msg), lang, *args):
-        code = ' '.join(args)
-
-        url, output = codepad.sandbox(code, lang)
+    @command('@run -l lang -c code')
+    def run(self, server, nick, user, host, target, msg, lang, code):
+        url, output = libpad.sandbox(code, lang)
 
         if len(output) <= self.max_width:
             send_msg(server, target, output)
@@ -30,7 +21,4 @@ class Codebox(object):
             send_msg(server, target, url)
 
 
-
-
-
-
+install = Codebox

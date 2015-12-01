@@ -31,6 +31,8 @@ from ameliabot.plugins import troll
 from ameliabot.plugins import calc
 from ameliabot.plugins import translator
 from ameliabot.plugins import url_title
+from ameliabot.plugins import codebox
+from ameliabot.plugins import codenv
 
 ##############################################################################
 
@@ -67,6 +69,9 @@ def PLUGIN_SCHEME(server):
     calc.install(server, '4WERXG-VAGETKREGX')
     translator.install(server)
     url_title.install(server)
+    codebox.install(server)
+    codenv.install(server, 'python', '#py', '#end')
+    codenv.install(server, 'c', '@c', '@end')
 
 ##############################################################################
 # The channel where the bot will stay when at freenode.
@@ -80,3 +85,5 @@ server = connect('irc.freenode.org', 6667, 'ameliabot',
               'bot_passwd', CHANNEL_SCHEME, PLUGIN_SCHEME)
 
 ##############################################################################
+
+

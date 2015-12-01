@@ -8,15 +8,13 @@ REG_TITLE = compile(STR_TITLE, IGNORECASE | DOTALL)
 class Title(object):
     """ This class is used to obtain url titles. """
     def __init__(self):
-        self.opener = urllib2.build_opener()
+        self.opener            = urllib2.build_opener()
         self.opener.addheaders = [('User-agent', 'Mozilla/5.0')]
-        self.MAX_SIZE = 262144
+        self.MAX_SIZE          = 262144
 
     def get_title(self, url):
-        data = self.get_page(url)
-        
-        field = search(REG_TITLE, data)
-
+        data       = self.get_page(url)
+        field      = search(REG_TITLE, data)
         page_title = field.group('data')
 
         return page_title
@@ -27,4 +25,3 @@ class Title(object):
         return data
 
 
-install = Title
