@@ -18,7 +18,6 @@ sys.path.append(join(expanduser('~'), '.amelia'))
 # from ameliabot.plugins import polyglot
 # from ameliabot.plugins import seen
 # from ameliabot.plugins import pipe
-# from ameliabot.plugins import note
 # from ameliabot.plugins.quote import quote
 # from ameliabot.plugins import survive
 # from ameliabot.plugins import logmsg
@@ -33,6 +32,7 @@ from ameliabot.plugins import translator
 from ameliabot.plugins import url_title
 from ameliabot.plugins import codebox
 from ameliabot.plugins import codenv
+from ameliabot.plugins import note
 
 ##############################################################################
 
@@ -72,6 +72,7 @@ def PLUGIN_SCHEME(server):
     codebox.install(server)
     codenv.install(server, 'python', '#py', '#end')
     codenv.install(server, 'c', '@c', '@end')
+    note.install(server)
 
 ##############################################################################
 # The channel where the bot will stay when at freenode.
@@ -85,5 +86,6 @@ server = connect('irc.freenode.org', 6667, 'ameliabot',
               'bot_passwd', CHANNEL_SCHEME, PLUGIN_SCHEME)
 
 ##############################################################################
+
 
 

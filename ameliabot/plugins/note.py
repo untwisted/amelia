@@ -2,28 +2,33 @@
 
 """
 
-from untwisted.task import sched
-from ameliabot.utils import codepad
 from untwisted.network import xmap
 from untwisted.plugins.irc import send_msg
+from ameliabot.cmd import command
 
-def install(server):
-    xmap(server, ('CMSG', '.note_add'), note_add)
-    xmap(server, ('CMSG', '.note_rm'), note_rm)
+class Note(object):
+    def __init__(self, server):
+        xmap(server, 'CMSG', self.note_add)
+        xmap(server, 'CMSG', self.note_rm)
+        xmap(server, 'JOIN', self.tell)
+        self.base = {}
 
-def note_add(server, (nick, user, 
-                    host, target, msg, ), inc, to, *args):
-    data = ' '.join(args) 
-    sched.after(int(inc), remember, True, server, nick, to, data)
+    @command('@note -add peer -msg data')
+    def note_add(self, server, nick, user, host, target,
+                                         msg, peer, data):
+        self.base[peer.lower()] = data
 
-def note_rm(server, (nick, user, host, target, msg,), inc):
-    sched.unmark(int(inc), remember)
+    @command('@note -rm id')
+    def note_rm(self, server, nick, user, host, target, peer):
+        del self.base[peer.lower()]
 
-def remember(server, nick, to, data):
-    send_msg(server, to, '%s:%s' % (nick, data))
+    def tell(self, server, nick, user, host, channel):
+        try:
+            data = self.base[nick.lower()]
+        except KeyError:
+            pass
+        else:
+            send_msg(server, channel, '%s %s' % (nick, data))
 
-
-
-
-
+install = Note
 
