@@ -14,8 +14,7 @@ class Note(object):
         self.base = {}
 
     @command('@note-add peer data')
-    def note_add(self, server, nick, user, host, target,
-                                         msg, peer, data):
+    def note_add(self, server, nick, user, host, target, msg, peer, data):
         self.base[peer.lower()] = data
 
     @command('@note-del peer')
@@ -28,10 +27,10 @@ class Note(object):
         except KeyError:
             pass
         else:
-            send_msg(server, channel, 
-                             '%s %s' % (nick, data))
+            send_msg(server, channel, '%s %s' % (nick, data))
 
 install = Note
+
 
 
 

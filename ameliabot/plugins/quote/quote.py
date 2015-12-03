@@ -1,10 +1,4 @@
 """
-Author: Iury O. G. Figueiredo.
-Name: quote
-Description: It holds a database with quotes.
-Usage:
-<Tau>.inspire
-<yu>And thou, vast ocean! on whose awful face
 """
 
 from untwisted.task import sched
@@ -28,6 +22,7 @@ def send_quote(server, (nick, user, host, target,
 
     data = choice(list_quote)
     send_msg(server, target, data)
+
 
 
 
