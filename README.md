@@ -32,10 +32,34 @@ The file named ameliarc is ameliabot setup file. It is needed to set up
 some config options in that file before running ameliabot.
 
 
+Video
+=====
+
+This video shows ameliabot features as well as explaining how to set up the bot config file.
+
+
+Plugins
+=======
+
+
+Getting Help
+============
 
 
 Ameliabot API
 =============
 
+
+Irc Channel
+===========
+
+**Network:**
+irc.freenode.org
+
+**Channel:**
+#vy
+
+**Nick:**
+Tau
 
 
