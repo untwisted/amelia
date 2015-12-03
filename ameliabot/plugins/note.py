@@ -10,7 +10,7 @@ class Note(object):
     def __init__(self, server):
         xmap(server, 'CMSG', self.note_add)
         xmap(server, 'CMSG', self.note_rm)
-        xmap(server, 'JOIN', self.tell)
+        xmap(server, 'JOIN', self.send_note)
         self.base = {}
 
     @command('@note-add peer data')
@@ -18,19 +18,21 @@ class Note(object):
                                          msg, peer, data):
         self.base[peer.lower()] = data
 
-    @command('@note-del id')
+    @command('@note-del peer')
     def note_rm(self, server, nick, user, host, target, peer):
         del self.base[peer.lower()]
 
-    def tell(self, server, nick, user, host, channel):
+    def send_note(self, server, nick, user, host, channel):
         try:
             data = self.base[nick.lower()]
         except KeyError:
             pass
         else:
-            send_msg(server, channel, '%s %s' % (nick, data))
+            send_msg(server, channel, 
+                             '%s %s' % (nick, data))
 
 install = Note
+
 
 
 
