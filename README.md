@@ -8,26 +8,34 @@ Install
 
     
 
-It runs on python2.
+**Note:** 
+Ameliabot demands python2.
 
-Run ameliabot
-=============
+Usage
+=====
 
-Once ameliabot is installed, you need to initialize ameliabot plugins
-folder in your home directory.
+The command below should be issued after the installation.
 
-Run the command below.
-
+~~~
 amelia --init
+~~~
 
-It will create.
-~/.amelia/ameliarc
+It will create the following dir/files.
+
+~~~
+~/.amelia/
+    ameliarc
+
+~~~
+
+The file named ameliarc is ameliabot setup file. It is needed to set up
+some config options in that file before running ameliabot.
 
 
 
 
-
-
+Ameliabot API
+=============
 
 
 
