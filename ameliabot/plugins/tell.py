@@ -6,9 +6,10 @@ def install(server):
     xmap(server, 'CMSG', send)
     xmap(server, 'PMSG', send)
 
-@command('@tell -person person -note note')
+@command('@tell person note')
 def send(server, nick, user, host, target, msg, person, note):
         send_msg(server, person, note)
+
 
 
 

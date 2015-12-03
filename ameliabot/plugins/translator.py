@@ -11,12 +11,13 @@ class Translator(object):
         self.source = GoogleTranslator()
         xmap(server, 'CMSG', self.translate)
 
-    @command('@g -f lang1 -t lang2 -d data')
+    @command('@g lang1 lang2 data')
     def translate(self, server, nick, user, host, target, msg, lang1, lang2, data):
         data = shape(self.source.translate(data, lang1, lang2))
         send_msg(server, target, data)
     
 install = Translator
+
 
 
 

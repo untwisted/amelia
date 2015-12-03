@@ -13,12 +13,12 @@ def install(server):
     xmap(server, 'CMSG', add)
     xmap(server, 'CMSG', rm)
 
-@command('@polyglot -add lang_x lang_y ident')
+@command('@polyglot-add lang_x lang_y ident')
 def add(server, nick, user, host, target, 
                msg, lang_x, lang_y, ident):
     xmap(server, ident, listen, lang_x, lang_y)
 
-@command('@polyglot -rm lang_x lang_y ident')
+@command('@polyglot-del lang_x lang_y ident')
 def rm(server, nick, user, host, target, 
                msg, lang_x, lang_y, ident):
     zmap(server, ident, listen, lang_x, lang_y)
@@ -30,6 +30,8 @@ def listen(server, nick, user, target, msg, lang_x, lang_y):
 
 def split(server, nick, user, host, target, msg):
     spawn(server, host, nick, user, target, msg)
+
+
 
 
 

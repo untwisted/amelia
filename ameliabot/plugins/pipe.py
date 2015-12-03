@@ -12,7 +12,7 @@ def install(server):
     xmap(server, 'CMSG', pipe_rm)
     xmap(server, 'CMSG', pipe_chan)
 
-@command('@pipe -add chan_x chan_y')
+@command('@pipe-add chan_x chan_y')
 def pipe_add(server, nick, user, host, target, 
                msg, chan_x, chan_y):
 
@@ -21,7 +21,7 @@ def pipe_add(server, nick, user, host, target,
         mapping[(server, chan_x)] = list()
     mapping[(server, chan_x)].append(chan_y)
 
-@command('@pipe -rm chan_x chan_y')
+@command('@pipe-del chan_x chan_y')
 def pipe_rm(server, nick, user, 
                     host, target, msg, chan_x, chan_y):
     chan_x, chan_y = chan_x.upper(), chan_y.upper()
@@ -33,6 +33,8 @@ def pipe_chan(server, nick, user, host, target, msg,):
 
     for ind in chan_list:
         send_msg(server, ind, '(%s)%s %s' % (target, nick, msg))
+
+
 
 
 

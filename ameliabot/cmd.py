@@ -1,44 +1,12 @@
-from re import split, match, compile
-
-def tokenize(data):
-    """
-    """
-
-    data = split(' +', data)
-    return iter(data)
-
-def build(seq, reg=''):
-    """
-    """
-
-    reg = seq.next()
-    for ind in seq:
-        reg = fmt(reg, ind)
-    return reg
-
-def fmt(reg, chk):
-    """
-    """
-
-    if chk.startswith('-'): 
-        return '%s %s' % (reg, chk)
-    else: 
-        return '%s (?P<%s>.+)' % (reg, chk)
+import shlex
 
 def command(template):
-    regex = build(tokenize(template))
+    fields = shlex.split(template)
     def shell(func):
         def handle(*args):
-            struct = match(regex, args[-1])
-            if struct: func(*args, **struct.groupdict())
+            data = shlex.split(args[-1])
+            if fields[0] == data[0]: 
+                func(*args, **dict(zip(fields[1:], data[1:])))
         return handle
     return shell
-
-
-
-
-
-
-
-
 

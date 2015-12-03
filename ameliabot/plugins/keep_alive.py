@@ -1,7 +1,4 @@
 """
-Author: Iury O. G. Figueiredo.
-Name: survive
-Description: Used to reconnect to a network when it has lost a connection.
 """
 
 from untwisted.network import xmap
@@ -15,6 +12,7 @@ def reconnect(server, err):
     connect(server.servaddr, server.port, server.nick,
     server.user, server.nick_passwd, server.adm_passwd, server.chan_list, 
     server.plugmap)
+
 
 
 

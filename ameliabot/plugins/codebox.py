@@ -11,7 +11,7 @@ class Codebox(object):
         self.max_width = max_width
         xmap(server, 'CMSG', self.run)
 
-    @command('@run -l lang -c code')
+    @command('@run lang code')
     def run(self, server, nick, user, host, target, msg, lang, code):
         url, output = libpad.sandbox(code, lang)
 
@@ -22,3 +22,5 @@ class Codebox(object):
 
 
 install = Codebox
+
+

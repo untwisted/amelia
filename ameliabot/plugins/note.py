@@ -13,12 +13,12 @@ class Note(object):
         xmap(server, 'JOIN', self.tell)
         self.base = {}
 
-    @command('@note -add peer -msg data')
+    @command('@note-add peer data')
     def note_add(self, server, nick, user, host, target,
                                          msg, peer, data):
         self.base[peer.lower()] = data
 
-    @command('@note -rm id')
+    @command('@note-del id')
     def note_rm(self, server, nick, user, host, target, peer):
         del self.base[peer.lower()]
 
@@ -31,4 +31,7 @@ class Note(object):
             send_msg(server, channel, '%s %s' % (nick, data))
 
 install = Note
+
+
+
 
