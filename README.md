@@ -6,7 +6,12 @@ A flexible ircbot written on top of untwisted framework.
 Install
 =======
 
-    
+pip install untwisted
+pip install ehp
+pip install libpad
+pip install gsearch
+pip install gdict
+pip install ameliabot    
 
 **Note:** 
 Ameliabot demands python2.
@@ -61,5 +66,7 @@ irc.freenode.org
 
 **Nick:**
 Tau
+
+
 
 
