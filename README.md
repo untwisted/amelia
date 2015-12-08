@@ -43,16 +43,16 @@ Video
 This video shows ameliabot features as well as explaining how to set up the bot config file.
 
 
-Plugins
-=======
-
-
 Getting Help
 ============
 
 
 Ameliabot API
 =============
+
+**HOWTO**
+
+[HOWTO.md](HOWTO.md)
 
 
 Irc Channel
@@ -66,6 +66,7 @@ irc.freenode.org
 
 **Nick:**
 Tau
+
 
 
 

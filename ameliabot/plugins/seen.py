@@ -1,4 +1,15 @@
 """ 
+Overview
+========
+
+Used to check last time a peer was seen online.
+
+Commands
+========
+
+Command: @seen peer
+Description: Show how long a nick has been inactive.
+
 """
 
 from untwisted.plugins.irc import send_msg
@@ -36,3 +47,4 @@ class Seen(object):
 
 
 install = Seen
+

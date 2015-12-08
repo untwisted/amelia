@@ -32,6 +32,7 @@ from ameliabot.plugins import seen
 from ameliabot.plugins import polyglot
 from ameliabot.plugins import keep_alive
 from ameliabot.plugins import ircadm
+from ameliabot.plugins import help
 
 ##############################################################################
 
@@ -69,10 +70,11 @@ def PLUGIN_SCHEME(server):
     polyglot.install(server)
     keep_alive.install(server)
     ircadm.install(server)
+    help.install(server)
 
 ##############################################################################
 # The channel where the bot will stay when at freenode.
-CHANNEL_SCHEME = ['#ameliabot', '#amelia']
+CHANNEL_SCHEME = ['#ameliabot', '#vy']
 
 # It tells the bot to connect to freenode then use the plugins
 # that we have defined in PLUGIN_SCHEME handle.
@@ -82,6 +84,7 @@ server = connect('irc.freenode.org', 6667, 'ameliabot',
               'bot_passwd', CHANNEL_SCHEME, PLUGIN_SCHEME)
 
 ##############################################################################
+
 
 
 
