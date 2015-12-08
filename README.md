@@ -64,8 +64,8 @@ Description: Print the docs for the given plugin.
 
 ~~~
 <Tau>@plugins
-<Tau>@doc seen
 <ameliabot> calc codebox codenv help ircadm ircshare join keep_alive logmsg note pipe polyglot quick_search quote seen spam tell translator troll url_title
+<Tau>@doc seen
 <ameliabot>Overview
 <ameliabot>========
 <ameliabot>Used to check last time a peer was seen online.
@@ -94,9 +94,5 @@ irc.freenode.org
 
 **Nick:**
 Tau
-
-
-
-
 
 
