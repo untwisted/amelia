@@ -7,22 +7,23 @@ from random import *
 from re import split
 from os.path import dirname, join
 from untwisted.plugins.irc import send_msg
+from ameliabot.cmd import command
 
-def install(server):
-    fd   = open(join(dirname(__file__), 'quote_database'), 'r')
-    data = fd.read()
+class Quote(object):
+    def __init__(self, server):
+        fd   = open(join(dirname(__file__), 'quote_database'), 'r')
+        data = fd.read()
+        fd.close()
+        self.data = split('\n+', data)
+        
+        xmap(server, 'CMSG', self.send_quote)
 
-    fd.close()
-    list_quote = split('\n+', data)
+    @command('@quote')
+    def send_quote(self, server, nick, user, host, target, msg):    
+        quote = choice(self.data)
+        send_msg(server, target, quote)
     
-    xmap(server, ('CMSG', '.inspire'), send_quote, list_quote)
-
-def send_quote(server, (nick, user, host, target, 
-                                        msg), list_quote):    
-
-    data = choice(list_quote)
-    send_msg(server, target, data)
-
+install = Quote
 
 
 

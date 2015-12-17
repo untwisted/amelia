@@ -1,9 +1,6 @@
 """
-Author: Iury O. G. Figueiredo.
-Name: auto_quote
-Description: It holds a database with quotes and automatically throws one
-in a given period of time.
 """
+
 from untwisted.plugins.irc import send_msg
 from untwisted.task import sched
 from random import *
@@ -23,6 +20,7 @@ def send_quote(server, chan_list, list_quote):
     for ind in chan_list:
         data = choice(list_quote)
         send_msg(server, ind, data)
+
 
 
 

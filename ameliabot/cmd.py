@@ -10,3 +10,6 @@ def command(template):
         return handle
     return shell
 
+def regcmd(template):
+    pass
+
