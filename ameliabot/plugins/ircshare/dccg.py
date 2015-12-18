@@ -1,11 +1,6 @@
 """
-Author: Iury O. G. Figueiredo.
-Name: dccg
-Description: It is used to receive files automatically into self.folder.
-It is a kind of dcc server where people could store files.
-Once one sends a file to the bot running this plugin it would automatically accept the file
-and store it into self.folder variable path.
 """
+
 from untwisted.plugins.irc import *
 from os.path import isfile
 from untwisted.network import xmap
@@ -38,6 +33,4 @@ class Get(object):
             xmap(dccclient, CONNECT_ERR, lambda spin, err: is_done("It couldn't connect."))
     
     
-
-
-
+install = Get

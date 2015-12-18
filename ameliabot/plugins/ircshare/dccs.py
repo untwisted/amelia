@@ -1,14 +1,4 @@
 """
-Author: Iury O. G. Figueiredo.
-Name: dccs
-Description: It is used to download files that are stored into FOLDER variable path.
-It is the counter part of dccg.
-Usage:
-.dcc_send file_name port
-
-Observation: once the above command is issued the bot running this plugin 
-should send a request to send a file to the one who issued the command.
-
 """
 
 from untwisted.network import *
@@ -17,16 +7,17 @@ from untwisted.plugins.irc import *
 from untwisted.tools import ip_to_long
 from os.path import getsize
 from socket import error
+from ameliabot.cmd import command
 
 HEADER = '\001DCC SEND %s %s %s %s\001' 
 
 class Send(object):
     def __init__(self, server, folder):
         self.folder = folder
-        xmap(server, ('CMSG', '.dcc_send'), self.dcc_send)
+        xmap(server, 'CMSG', self.dcc_send)
 
-    def dcc_send(self, server, (nick, user, 
-                            host, target, msg), filename, port):
+    @command('@ircshare-send filename port')
+    def dcc_send(self, server, nick, user, host, target, msg, filename, port):
     
         path = '%s/%s' % (self.folder, filename)
         size = getsize(path)
@@ -58,9 +49,4 @@ class Send(object):
             xmap(dccserv, TIMEOUT, is_done, None, "TIMEOUT. Server is down.")
         
         
-
-
-
-
-
-
+install = Send
