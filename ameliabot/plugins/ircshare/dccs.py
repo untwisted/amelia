@@ -5,7 +5,7 @@ from untwisted.network import *
 from untwisted.utils.stdio import CLOSE, CONNECT_ERR
 from untwisted.plugins.irc import *
 from untwisted.tools import ip_to_long
-from os.path import getsize
+from os.path import getsize, join
 from socket import error
 from ameliabot.cmd import command
 
@@ -19,7 +19,7 @@ class Send(object):
     @command('@ircshare-send filename port')
     def dcc_send(self, server, nick, user, host, target, msg, filename, port):
     
-        path = '%s/%s' % (self.folder, filename)
+        path = join(self.folder, filename)
         size = getsize(path)
         fd   = open(path, 'rb')
     
@@ -50,3 +50,5 @@ class Send(object):
         
         
 install = Send
+
+

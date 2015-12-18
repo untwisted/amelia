@@ -2,7 +2,7 @@
 """
 
 from untwisted.plugins.irc import *
-from os.path import isfile
+from os.path import isfile, join
 from untwisted.network import xmap
 from untwisted.utils.stdio import CLOSE, CONNECT_ERR
 from untwisted.tools import long_to_ip
@@ -15,7 +15,7 @@ class Get(object):
     def dcc_get(self, server, (nick, user, host, 
                         target, msg), filename, address, port, size):
     
-        path = '%s/%s' % (self.folder, filename)
+        path = join(self.folder, filename)
 
         if isfile(path):      
             send_msg(server, nick, 'File already exists.')
@@ -34,3 +34,5 @@ class Get(object):
     
     
 install = Get
+
+
