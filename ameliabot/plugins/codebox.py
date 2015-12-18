@@ -1,4 +1,17 @@
 """ 
+Overview
+========
+
+This plugin uses codepad.org to run inline code and output
+the result on the channel. The output is a url unless the length of the output is short enough.
+
+Commands
+========
+
+Command: @run lang code
+Description: Run inline code on codepad.org.
+Example:
+
 """
 
 import libpad
@@ -22,6 +35,8 @@ class Codebox(object):
 
 
 install = Codebox
+
+
 
 
 
