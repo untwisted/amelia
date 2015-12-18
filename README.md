@@ -42,6 +42,7 @@ Video
 
 This video shows ameliabot features as well as explaining how to set up the bot config file.
 
+https://www.youtube.com/watch?v=JpjOOPX0s6o
 
 Getting Help
 ============
@@ -94,6 +95,7 @@ irc.freenode.org
 
 **Nick:**
 Tau
+
 
 
 
