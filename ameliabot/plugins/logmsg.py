@@ -1,4 +1,9 @@
 """
+Overview
+========
+
+Used to log msgs into a folder.
+
 """
 
 from time import asctime
@@ -25,6 +30,7 @@ class LogMsg(object):
     def store_user(self, server, nick, user, host, target, msg):
         with open('%s/%s' % (self.folder, nick), 'a+') as fd:
             fd.write('(%s)<%s> %s\n' % (asctime(), nick, msg))
+
 
 
 

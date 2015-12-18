@@ -1,4 +1,17 @@
 """
+Overview
+========
+
+This plugin retrieves the docstring for each one of the implemented plugins.
+
+Commands
+========
+
+Command: @plugins
+Description: Show all available plugins.
+
+Command: @doc plugin
+Description Show the help for the plugin.
 
 """
 
@@ -29,5 +42,6 @@ class Help(object):
         send_lines(server, nick, doc)
 
 install = Help
+
 
 

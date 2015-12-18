@@ -1,4 +1,14 @@
 """
+Overview
+========
+
+Used to translate quickly some word from lang1 to lang2.
+
+Commands
+========
+
+Command: @g lang1 lang2 data
+Description: Translate the data from lang1 to lang2.
 """
 
 from gdict import GoogleTranslator, shape
@@ -17,6 +27,7 @@ class Translator(object):
         send_msg(server, target, data)
     
 install = Translator
+
 
 
 

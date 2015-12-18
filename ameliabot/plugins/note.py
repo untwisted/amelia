@@ -1,5 +1,17 @@
 """
+Overview
+========
 
+Used to add a note to a peer when he joins the channel.
+
+Commands
+========
+
+Command: @note-add peer data
+Description: Add a msg to be shown when a nick joins a channel where the bot is in.
+
+Command: @note-del peer
+Description: Remove a note from a nick.
 """
 
 from untwisted.network import xmap
@@ -30,6 +42,7 @@ class Note(object):
             send_msg(server, channel, '%s %s' % (nick, data))
 
 install = Note
+
 
 
 

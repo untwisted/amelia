@@ -1,4 +1,18 @@
 """
+Overview
+========
+
+This plugin is used to pipe channels. Whenever one types in a channel it appears in other.
+
+Commands
+========
+
+Command: @pipe-add chan_x chan_y
+Description: Pipes all text from chan_x to chan_y.
+
+Command: @pipe-del chan_x chan_y
+Description: Remove the pipe from chan_x to chan_y.
+
 """
 
 from untwisted.network import xmap
@@ -33,6 +47,7 @@ def pipe_chan(server, nick, user, host, target, msg,):
 
     for ind in chan_list:
         send_msg(server, ind, '(%s)%s %s' % (target, nick, msg))
+
 
 
 

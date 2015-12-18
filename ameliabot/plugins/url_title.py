@@ -1,4 +1,9 @@
 """
+Overview
+========
+
+Used to extract url titles from links.
+
 """
 
 from untwisted.plugins.irc import send_msg
@@ -25,4 +30,5 @@ class UrlTitle(object):
         send_msg(server, target, page_title)
 
 install = UrlTitle
+
 

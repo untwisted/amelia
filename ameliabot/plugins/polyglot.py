@@ -1,4 +1,17 @@
 """
+Overview
+========
+
+Used to translate all text from an user.
+
+Commands
+========
+
+Command: @polyglot-add lang_x lang_y ident
+Description: Whenever an user with ident types it translates from lang_x to lang_y.
+
+Command: @polyglot-del lang_x lang_y ident
+Description: Remove the user with ident from the list of users to have their msgs to be translated.
 """
 
 from untwisted.network import spawn, xmap, zmap
@@ -30,6 +43,7 @@ def listen(server, nick, user, target, msg, lang_x, lang_y):
 
 def split(server, nick, user, host, target, msg):
     spawn(server, host, nick, user, target, msg)
+
 
 
 

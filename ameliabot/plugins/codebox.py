@@ -10,7 +10,11 @@ Commands
 
 Command: @run lang code
 Description: Run inline code on codepad.org.
-Example:
+
+Example
+=======
+<\tau> @run python print 'hi'
+<\amelia>  hi
 
 """
 
@@ -35,6 +39,7 @@ class Codebox(object):
 
 
 install = Codebox
+
 
 
 

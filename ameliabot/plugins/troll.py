@@ -1,4 +1,9 @@
 """
+Overview
+========
+
+Whenever it matches a combination of letters that appear to be a laught
+it makes the bot laught as well.
 """
 
 from untwisted.plugins.irc import send_msg
@@ -25,4 +30,5 @@ class Troll(object):
         return data
 
 install = Troll
+
 

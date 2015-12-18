@@ -1,4 +1,15 @@
 """
+Overview
+========
+
+Used to do quick searches on google.
+
+Commands
+========
+
+Command: @find ameliabot
+Description: Searches on google for ameliabot.
+
 """
 
 from random import choice
@@ -18,6 +29,7 @@ class QuickSearch(object):
         send_msg(server, target, str(choice(result)))
     
 install = QuickSearch
+
 
 
 

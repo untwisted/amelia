@@ -1,4 +1,28 @@
 """ 
+Overview
+========
+
+This plugin implements a mechanism to execute code on codepad using a sophisticated approach.
+It uses a scheme of tags like #py to start a sequence of code and #end to close. It supports
+other langs like c, haskell etc.
+
+Example
+=======
+
+<\tau> #py
+<\tau> def calc():
+<\tau> 	print 'hello world'
+<\tau> calc()
+<\tau> #end
+<\amelia>  hello world
+
+<\tau> @c
+<\tau> int main(int argv, char *argv[]) {
+<\tau> 	printf("hello world");
+<\tau> 	return 0;
+<\tau> }
+<\tau> @end
+<\amelia> : error: conflicting types for 'argv' : error: previous definition of 'argv' was here
 
 """
 
@@ -33,6 +57,7 @@ class Codenv(object):
             send_msg(server, target, url)
 
 install = Codenv
+
 
 
 

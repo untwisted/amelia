@@ -8,7 +8,13 @@ Commands
 
 Command: @calc expression
 Description: Computes the expression using wolfram alpha.
-Example: 
+
+Example
+=======
+
+<\tau> @calc integrate x^2
+<\amelia>  integral x^2  dx = x^3/3+constant
+
 """
 
 from ameliabot.utils.mathapi import MathApi
@@ -26,6 +32,8 @@ class Calculate(object):
         send_msg(server, target, self.source.submit(exp))
     
 install = Calculate
+
+
 
 
 
