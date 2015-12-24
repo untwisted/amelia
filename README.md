@@ -36,6 +36,18 @@ It will create the following dir/files.
 The file named ameliarc is ameliabot setup file. It is needed to set up
 some config options in that file before running ameliabot.
 
+**~/.amelia/ameliarc**
+
+~~~
+
+~~~
+
+After setting up the irc network, irc channels, nick, nick password then it is possible 
+to run the bot with the following command.
+
+~~~
+amelia --run
+~~~
 
 Video
 =====
@@ -81,7 +93,7 @@ Ameliabot API
 
 **HOWTO**
 
-[HOWTO.md](HOWTO.md)
+[MANUAL.md](MANUAL.md)
 
 
 Irc Channel
@@ -95,6 +107,8 @@ irc.freenode.org
 
 **Nick:**
 Tau
+
+
 
 
 
