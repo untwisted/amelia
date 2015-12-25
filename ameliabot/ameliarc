@@ -18,14 +18,12 @@ from ameliabot.plugins import quick_search
 from ameliabot.plugins import tell
 from ameliabot.plugins import troll
 from ameliabot.plugins import calc
-from ameliabot.plugins import translator
 from ameliabot.plugins import url_title
 from ameliabot.plugins import codebox
 from ameliabot.plugins import codenv
 from ameliabot.plugins import note
 from ameliabot.plugins import pipe
 from ameliabot.plugins import seen
-from ameliabot.plugins import polyglot
 from ameliabot.plugins import keep_alive
 from ameliabot.plugins import ircadm
 from ameliabot.plugins import help
@@ -55,7 +53,6 @@ def PLUGIN_SCHEME(server):
     tell.install(server)
     troll.install(server, 'aehiou', 4, 16)
     calc.install(server, '4WERXG-VAGETKREGX')
-    translator.install(server)
     url_title.install(server)
     codebox.install(server)
     codenv.install(server, 'python', '#py', '#end')
@@ -63,7 +60,6 @@ def PLUGIN_SCHEME(server):
     note.install(server)
     pipe.install(server)
     seen.install(server)
-    polyglot.install(server)
     keep_alive.install(server)
     ircadm.install(server)
     help.install(server)
@@ -87,6 +83,7 @@ server = connect('irc.freenode.org', 6667, 'ameliabot',
 
 # It is possible to have more than one connection per bot process. 
 # For such just calls connect as many times as needed.
+
 
 
 
