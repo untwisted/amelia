@@ -18,6 +18,23 @@ The latter one uses regex for the command template.
 User Plugins
 ============
 
+User plugins should be in the ~/.amelia/ folder, such a folder is appended to sys.path then the plugins should be
+loaded from ~/.amelia/ameliarc with a simple import.
+
+Consider a file named ~/.amelia/my.py in order to make the bot load the plugin named my.py one would put
+in the ~/.amelia/ameliarc file the following sequence of code.
+
+~~~python
+# plugin imports.
+
+import my
+
+# irc network handle, such a handle installs the plugins.
+def irc_network(server)
+    # plugin installations.
+    my.install(server)
+~~~
+
 Plugin Template
 ===============
 
@@ -47,6 +64,7 @@ Irc Messages
 
 Plugin Help System Scheme
 =========================
+
 
 
 
