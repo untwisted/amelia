@@ -64,6 +64,8 @@ def PLUGIN_SCHEME(server):
     ircadm.install(server)
     help.install(server)
     quote.install(server)
+
+    # Used to share files, set the correct folder where the files would be in.
     booklist.BookList(server, '/home/tau/ircshare')
     dccs.install(server, '/home/tau/ircshare')
     dccg.install(server, '/home/tau/ircshare')
@@ -83,6 +85,7 @@ server = connect('irc.freenode.org', 6667, 'ameliabot',
 
 # It is possible to have more than one connection per bot process. 
 # For such just calls connect as many times as needed.
+
 
 
 
