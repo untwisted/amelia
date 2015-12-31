@@ -1,6 +1,6 @@
 from ameliabot.adm import is_adm
 from untwisted.network import xmap
-from untwisted.plugins.irc import send_msg
+from untwisted.plugins.irc import send_cmd
 from ameliabot.cmd import command
 
 def install(server, *args):
@@ -9,6 +9,7 @@ def install(server, *args):
 @command('@irccmd data')
 def irc_cmd(server, nick, user, host, target, msg, data):
     if is_adm(host): send_cmd(server, data)
+
 
 
 
