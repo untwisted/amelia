@@ -94,8 +94,8 @@ def install(server):
     xmap(server, 'CMSG', send)
 
 @regcmd('@test (?P<arg1>[^ ]+) (?P<arg2>.+)')
-def handle(server, nick, user, host, target, msg, person, note):
-        send_msg(server, arg1, arg2)
+def handle(server, nick, user, host, target, msg, arg1, arg2):
+        send_msg(server, target, 'The command issued:@%s %s' % (arg1, arg2))
 ~~~
 
 The name of the groups so defined turn into variables that are in the scope.
@@ -167,11 +167,10 @@ def on_privmsg(con, nick, user, host, target, msg):
 
 The irc events above are the basic ones, for a better description see irc rfc.
 
-Irc Commands
-============
-
 Plugin Help System Scheme
 =========================
+
+
 
 
 

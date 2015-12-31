@@ -111,8 +111,8 @@ def PLUGIN_SCHEME(server):
     These are all ameliabot built in plugins.
     You can have more than one scheme for irc networks.
 
-    Just implement new PLUGIN_SCHEME functions then pass
-    then to connect.
+    Just implement new PLUGIN_SCHEME functions then pass it as argument
+    to connect function.
     """
 
     # join.install(server)
@@ -232,6 +232,7 @@ irc.freenode.org
 
 **Nick:**
 Tau
+
 
 
 
