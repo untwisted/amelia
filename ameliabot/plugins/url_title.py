@@ -10,11 +10,11 @@ from untwisted.plugins.irc import send_msg
 from ameliabot.utils.title import Title
 from re import search, compile, sub
 from untwisted.network import xmap
+import requests
+from ehp import *
 
 STR_LINK  = '(?P<address>http[s]?://[^ ]*)'
 REG_LINK  = compile(STR_LINK)
-STR_BLANK = r'\s+'
-REG_BLANK = compile(STR_BLANK)
 
 class UrlTitle(object):
     def __init__(self, server):
@@ -25,10 +25,13 @@ class UrlTitle(object):
         struct = search(REG_LINK, msg)
         if not struct: 
             return
-        page_title = self.title.get_title(struct.group('address'))
-        page_title = sub(REG_BLANK, ' ', page_title) 
-        send_msg(server, target, page_title)
+        req   = requests.get(struct.group('address'))
+        html  = Html()
+        dom   = html.feed(req.text.encode(req.encoding))
+        title = dom.fst('title').text()
+        send_msg(server, target, title)
 
 install = UrlTitle
+
 
 
