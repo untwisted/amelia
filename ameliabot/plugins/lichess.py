@@ -24,8 +24,8 @@ def getPlayerInfo(player):
 def ircOutput(playerinfo):
     if not playerinfo:
         return 'not found'
-    return ("01,00lichess.org - %s's performance: bullet: %s "
-           "blitz: %s classical: %s" % 
+    return ("lichess.org - %s's performance: bullet: %s "
+           "blitz: %s classical: %s" % 
            (playerinfo['username'], playerinfo['perfs']['bullet']['rating'],
             playerinfo['perfs']['blitz']['rating'], playerinfo['perfs']['classical']['rating']))
 
