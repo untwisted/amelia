@@ -71,8 +71,7 @@ from ameliabot.core import connect
 ##############################################################################
 import sys
 
-# You can place your plugins at ~/.amelia
-# To use them inside this file just do.
+# You can place your plugins at ~/.amelia # To use them inside this file just do.
 # import plugin_package_name or import plugin_name
 
 from os.path import expanduser, join
@@ -82,7 +81,7 @@ sys.path.append(join(expanduser('~'), '.amelia'))
 
 # from ameliabot.plugins import join
 # from ameliabot.plugins import logmsg
-# from ameliabot.plugins.quote import auto_quote
+from ameliabot.plugins import spam
 from ameliabot.plugins import quick_search
 from ameliabot.plugins import tell
 from ameliabot.plugins import troll
@@ -97,9 +96,13 @@ from ameliabot.plugins import keep_alive
 from ameliabot.plugins import ircadm
 from ameliabot.plugins import help
 from ameliabot.plugins.quote import quote
-from ameliabot.plugins.ircshare import booklist
-from ameliabot.plugins.ircshare import dccs
-from ameliabot.plugins.ircshare import dccg
+from ameliabot.plugins import booklist
+from ameliabot.plugins import dccs
+from ameliabot.plugins import dccg
+from ameliabot.plugins import translator
+from ameliabot.plugins import polyglot
+from ameliabot.plugins import lichess
+
 
 ##############################################################################
 
@@ -117,7 +120,7 @@ def PLUGIN_SCHEME(server):
 
     # join.install(server)
     # logmsg.LogMsg(server, '/home/tau')
-    # auto_quote.install(server, ['#vy'])
+    spam.install(server, db=['Ameliabot rocks', 'Use ameliabot'], excpt=['#freenode'])
     quick_search.install(server)
     tell.install(server)
     troll.install(server, 'aehiou', 4, 16)
@@ -133,6 +136,9 @@ def PLUGIN_SCHEME(server):
     ircadm.install(server)
     help.install(server)
     quote.install(server)
+    translator.install(server)
+    polyglot.install(server)
+    lichess.install(server)
 
     # Used to share files, set the correct folder where the files would be in.
     booklist.BookList(server, '/home/tau/ircshare')
@@ -154,6 +160,12 @@ server = connect('irc.freenode.org', 6667, 'ameliabot',
 
 # It is possible to have more than one connection per bot process. 
 # For such just calls connect as many times as needed.
+
+
+
+
+
+
 
 
 
@@ -232,6 +244,7 @@ irc.freenode.org
 
 **Nick:**
 Tau
+
 
 
 
