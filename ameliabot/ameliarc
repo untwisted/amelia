@@ -2,8 +2,7 @@ from ameliabot.core import connect
 ##############################################################################
 import sys
 
-# You can place your plugins at ~/.amelia
-# To use them inside this file just do.
+# You can place your plugins at ~/.amelia # To use them inside this file just do.
 # import plugin_package_name or import plugin_name
 
 from os.path import expanduser, join
@@ -33,6 +32,8 @@ from ameliabot.plugins.ircshare import dccs
 from ameliabot.plugins.ircshare import dccg
 from ameliabot.plugins import translator
 from ameliabot.plugins import polyglot
+from ameliabot.plugins import lichess
+
 
 ##############################################################################
 
@@ -68,6 +69,7 @@ def PLUGIN_SCHEME(server):
     quote.install(server)
     translator.install(server)
     polyglot.install(server)
+    lichess.install(server)
 
     # Used to share files, set the correct folder where the files would be in.
     booklist.BookList(server, '/home/tau/ircshare')
