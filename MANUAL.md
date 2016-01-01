@@ -128,6 +128,12 @@ from untwisted.plugins.irc import send_msg
 from untwisted.network import xmap
 
 def install(server):
+    # When an user sends a channel message.
+    xmap(server, 'CMSG', on_channel_msg)
+
+    # When an user sends a private message.
+    xmap(server, 'PMSG', on_private_msg)
+
     # When an user joins a channel that the bot is in.
     xmap(server, 'JOIN', send_welcome)
     
@@ -145,6 +151,12 @@ def install(server):
 
     # When an user has sent a private or a channel msg.
     xmap(con, 'PRIVMSG, on_privmsg)
+
+def on_channel_msg(con, nick, user, host, target, msg):
+    pass
+
+def on_private_msg(con, nick, user, host, target, msg):
+    pass
 
 def on_join(server, nick, user, host, channel):
     pass
@@ -167,14 +179,91 @@ def on_privmsg(con, nick, user, host, target, msg):
 
 The irc events above are the basic ones, for a better description see irc rfc.
 
+The bot credentials
+===================
+
+It is possible to implement plugins that demand some level of security. Ameliabot
+implements a built-in plugin for users who have the bot password to login with the bot.
+
+### Login 
+
+The command to authenticate with amelia is as follow.
+
+~~~
+@login password
+~~~
+
+**The command above works only with private messages.**
+
+Once the user is logged, amelia will keep the user's host in memory. Whenever an user
+issues a command that demands to be authentication, amelia will check the user host.
+
+
+### Plugin example that uses authentication
+
+~~~python
+from ameliabot.adm import is_adm
+from untwisted.network import xmap
+from untwisted.plugins.irc import send_cmd
+from ameliabot.cmd import command
+
+def install(server, *args):
+    xmap(server, 'CMSG', irc_cmd)
+    xmap(server, 'PMSG', irc_cmd)
+
+@command('@irccmd data')
+def irc_cmd(server, nick, user, host, target, msg, data):
+    # is_adm(host) checks whether the user is authenticated
+    # in order to send back to the server the irc command.
+    if is_adm(host): send_cmd(server, data)
+
+~~~
+
+The function below.
+
+~~~python
+is_adm(host)
+~~~
+
+is used to check for the user's authentication. Plugins that demand authentication should use
+this function.
+
 Plugin Help System Scheme
 =========================
 
+Ameliabot implements a scheme to print documentation of a given plugin for users. It is necessary
+to comment the plugin modules with a docstring. The format is as follow.
 
+~~~python
+"""
+Overview
+========
+This plugin uses wolfram alpha to compute mathematical expressions.
 
+Commands
+========
 
+Command: @calc expression
+Description: Computes the expression using wolfram alpha.
 
+Example
+=======
 
+<\tau> @calc integrate x^2
+<\amelia>  integral x^2  dx = x^3/3+constant
+"""
+~~~
 
+Once the plugin is documented then it would be listed with the command.
+
+~~~
+@plugins
+~~~
+
+and the docstring would be shown to the user who issued the command with.
+
+~~~
+@doc plugin_name
+~~~
 
 

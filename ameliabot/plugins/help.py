@@ -25,6 +25,7 @@ import os.path
 class Help(object):
     def __init__(self, server):
         xmap(server, 'PMSG', self.plugins)
+        xmap(server, 'PMSG', self.send_doc)
     
     @command('@plugins')
     def plugins(self, server, nick, user, host, target, msg):
@@ -32,16 +33,17 @@ class Help(object):
         data = ''
         for _, name, _ in iter_modules([dir]):
             data = '%s %s' % (data, name)
-        send_msg(server, nick, data)
+        send_lines(server, nick, data)
 
     @command('@doc plugin')
-    def plugins(self, server, nick, user, host, target, msg, plugin):
+    def send_doc(self, server, nick, user, host, target, msg, plugin):
         doc = ''
         code = 'import ameliabot.plugins.%s\ndoc = ameliabot.plugins.%s.__doc__' 
         exec(code % (plugin, plugin))
         send_lines(server, nick, doc)
 
 install = Help
+
 
 
 
