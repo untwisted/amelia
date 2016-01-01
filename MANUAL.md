@@ -266,4 +266,8 @@ and the docstring would be shown to the user who issued the command with.
 @doc plugin_name
 ~~~
 
+**Note:** 
+Plugins that are made of packages should have the docstring inside the package's __init__.py file.
+
+
 

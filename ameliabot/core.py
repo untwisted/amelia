@@ -12,7 +12,7 @@ def connect(servaddr, port, nick, user, nick_passwd, adm_passwd, chan_list, plug
     Client(server)
 
     def auto_join(server, *args):
-        send_msg(server, 'nickserv', 'identify %s' % nick_passwd)
+        send_cmd(server, nick_passwd)
         for ind in chan_list:
             send_cmd(server, 'JOIN %s' % ind)
 
@@ -67,6 +67,7 @@ def connect(servaddr, port, nick, user, nick_passwd, adm_passwd, chan_list, plug
 
     server.connect_ex((ip, port))
     return server
+
 
 
 
