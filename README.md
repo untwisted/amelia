@@ -233,25 +233,13 @@ Ameliabot API
 [MANUAL.md](MANUAL.md)
 
 
-Irc Channel
-===========
+Support on at irc
+=================
 
-**Network:**
-irc.freenode.org
-
-**Channel:**
-#vy
-
-**Nick:**
-Tau
-
-
-
-
-
-
-
-
+~~~
+Network: irc.freenode.org
+Channel: #vy
+~~~
 
 
 
