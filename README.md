@@ -81,7 +81,7 @@ sys.path.append(join(expanduser('~'), '.amelia'))
 
 # from ameliabot.plugins import join
 # from ameliabot.plugins import logmsg
-from ameliabot.plugins import spam
+# from ameliabot.plugins import spam
 from ameliabot.plugins import quick_search
 from ameliabot.plugins import tell
 from ameliabot.plugins import troll
@@ -120,7 +120,7 @@ def PLUGIN_SCHEME(server):
 
     # join.install(server)
     # logmsg.LogMsg(server, '/home/tau')
-    spam.install(server, db=['Ameliabot rocks', 'Use ameliabot'], excpt=['#freenode'])
+    # spam.install(server, db=['Ameliabot rocks', 'Use ameliabot'], excpt=['#freenode'])
     quick_search.install(server)
     tell.install(server)
     troll.install(server, 'aehiou', 4, 16)
@@ -244,6 +244,7 @@ irc.freenode.org
 
 **Nick:**
 Tau
+
 
 
 
