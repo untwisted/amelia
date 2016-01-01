@@ -147,17 +147,17 @@ def PLUGIN_SCHEME(server):
 
 ##############################################################################
 # The channel where the bot will stay when at freenode.
-CHANNEL_SCHEME = ['#ameliabot', '#vy']
+# CHANNEL_SCHEME = ['#ameliabot', '#vy']
 
 ##############################################################################
 # It tells the bot to connect to freenode then use the plugins
 # that we have defined in PLUGIN_SCHEME handle.
 # It will join the channels #ameliabot, #vy and ##calculus at irc.freenode.org
-server = connect('irc.freenode.org', 6667, 
-                 'ameliabot',                                 
-                 'untwistedbot euler euler :Ameliabot',       
-                 'PRIVMSG nickserv :IDENTIFY nick_passwd',    
-                 'bot_passwd', CHANNEL_SCHEME, PLUGIN_SCHEME)
+# server = connect('irc.freenode.org', 6667, 
+                 # 'ameliabot',                                 
+                 # 'untwistedbot euler euler :Ameliabot',       
+                 # 'PRIVMSG nickserv :IDENTIFY nick_passwd',    
+                 # 'bot_passwd', CHANNEL_SCHEME, PLUGIN_SCHEME)
 
 ##############################################################################
 
@@ -226,6 +226,7 @@ Support on at irc
 Network: irc.freenode.org
 Channel: #vy
 ~~~
+
 
 
 
