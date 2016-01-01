@@ -26,9 +26,9 @@ from ameliabot.plugins import keep_alive
 from ameliabot.plugins import ircadm
 from ameliabot.plugins import help
 from ameliabot.plugins.quote import quote
-from ameliabot.plugins.ircshare import booklist
-from ameliabot.plugins.ircshare import dccs
-from ameliabot.plugins.ircshare import dccg
+from ameliabot.plugins import booklist
+from ameliabot.plugins import dccs
+from ameliabot.plugins import dccg
 from ameliabot.plugins import translator
 from ameliabot.plugins import polyglot
 from ameliabot.plugins import lichess
@@ -89,6 +89,7 @@ server = connect('irc.freenode.org', 6667, 'ameliabot',
 
 # It is possible to have more than one connection per bot process. 
 # For such just calls connect as many times as needed.
+
 
 
 
