@@ -22,6 +22,7 @@ import wolframalpha
 from untwisted.plugins.irc import send_msg
 from untwisted.network import xmap
 from ameliabot.cmd import regcmd
+from ameliabot.tools import send_lines
 
 class Calculate(object):
     def __init__(self, server, appid):
@@ -30,11 +31,16 @@ class Calculate(object):
     
     @regcmd('@calc (?P<exp>.+)$')
     def calculate(self, server, nick, user, host, target, msg, exp):
-        req = self.client.query(exp)
-        send_msg(server, target, req.results.next().text)
+        req  = self.client.query(exp)
+        data = ''
+        for pod in req:
+            if pod.text:
+                data = '%s %s' % (data, pod.text)
+        send_lines(server, target, data)
     
 install = Calculate
 
+print 'shit'
 
 
 
