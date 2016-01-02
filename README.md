@@ -3,6 +3,10 @@ ameliabot
 
 A flexible ircbot written on top of untwisted framework.
 
+Features
+========
+
+
 Install
 =======
 
@@ -13,6 +17,7 @@ pip install libpad
 pip install gsearch
 pip install ameliabot    
 pip install libdict
+pip install wolframalpha
 ~~~
 
 from source
@@ -226,6 +231,8 @@ Support on at irc
 Network: irc.freenode.org
 Channel: #vy
 ~~~
+
+
 
 
 

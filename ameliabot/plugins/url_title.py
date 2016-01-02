@@ -7,7 +7,6 @@ Used to extract url titles from links.
 """
 
 from untwisted.plugins.irc import send_msg
-from ameliabot.utils.title import Title
 from re import search, compile, sub
 from untwisted.network import xmap
 import requests
@@ -18,7 +17,6 @@ REG_LINK  = compile(STR_LINK)
 
 class UrlTitle(object):
     def __init__(self, server):
-        self.title = Title()
         xmap(server, 'CMSG', self.check)
     
     def check(self, server, nick, user, host, target, msg):
@@ -32,6 +30,8 @@ class UrlTitle(object):
         send_msg(server, target, title)
 
 install = UrlTitle
+
+
 
 
 

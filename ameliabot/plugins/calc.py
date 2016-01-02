@@ -17,21 +17,24 @@ Example
 
 """
 
-from ameliabot.utils.mathapi import MathApi
+import wolframalpha
+
 from untwisted.plugins.irc import send_msg
 from untwisted.network import xmap
 from ameliabot.cmd import regcmd
 
 class Calculate(object):
     def __init__(self, server, appid):
-        self.source = MathApi(appid)
+        self.client = wolframalpha.Client(appid)
         xmap(server, 'CMSG', self.calculate)
     
     @regcmd('@calc (?P<exp>.+)$')
     def calculate(self, server, nick, user, host, target, msg, exp):
-        send_msg(server, target, self.source.submit(exp))
+        req = self.client.query(exp)
+        send_msg(server, target, req.results.next().text)
     
 install = Calculate
+
 
 
 
