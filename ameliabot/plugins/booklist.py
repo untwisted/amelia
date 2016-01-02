@@ -1,4 +1,14 @@
 """ 
+Overview
+========
+
+Used to list files that are being shared.
+
+Commands
+========
+
+Command: @dcc-list
+Description: List all files that exist in a given folder that was shared.
 
 """
 
@@ -16,7 +26,7 @@ class BookList(object):
         self.folder = folder
         xmap(server, 'CMSG', self.list_folder)
     
-    @command('@ircshare-list')
+    @command('@dcc-list')
     def list_folder(self, server, nick, user, host, target, msg):
         """
         """
@@ -26,6 +36,7 @@ class BookList(object):
         url, _ = libpad.sandbox(content, '') 
         send_msg(server, target, url)
         
+
 
 
 

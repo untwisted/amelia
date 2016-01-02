@@ -1,4 +1,14 @@
 """
+Overview
+========
+
+This plugin is used to receive files automatically through dcc.
+
+Usage
+=====
+
+Once this plugin is installed and a directory was set in your ameliarc then whatever files
+that are sent to the bot it will be saved in directory that was chosen.
 
 """
 
@@ -35,6 +45,7 @@ class Get(object):
     
     
 install = Get
+
 
 
 

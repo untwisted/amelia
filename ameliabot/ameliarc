@@ -11,8 +11,8 @@ sys.path.append(join(expanduser('~'), '.amelia'))
 # The plugin imports.
 
 # from ameliabot.plugins import join
-# from ameliabot.plugins import logmsg
 # from ameliabot.plugins import spam
+from ameliabot.plugins import logmsg
 from ameliabot.plugins import quick_search
 from ameliabot.plugins import tell
 from ameliabot.plugins import troll
@@ -50,8 +50,9 @@ def PLUGIN_SCHEME(server):
     """
 
     # join.install(server)
-    # logmsg.LogMsg(server, '/home/tau')
     # spam.install(server, db=['Ameliabot rocks', 'Use ameliabot'], excpt=['#freenode'])
+    # logmsg.LogMsg(server, '/home/tau')
+
     quick_search.install(server)
     tell.install(server)
     troll.install(server, 'aehiou', 4, 16)
@@ -72,9 +73,9 @@ def PLUGIN_SCHEME(server):
     lichess.install(server)
 
     # Used to share files, set the correct folder where the files would be in.
-    booklist.BookList(server, '/home/tau/ircshare')
-    dcc_send.install(server, '/home/tau/ircshare')
-    dcc_get.install(server, '/home/tau/ircshare')
+    # booklist.BookList(server, '/home/tau/ircshare')
+    # dcc_send.install(server, '/home/tau/ircshare')
+    # dcc_get.install(server, '/home/tau/ircshare')
 
 ##############################################################################
 # The channel where the bot will stay when at freenode.
@@ -102,6 +103,7 @@ server = connect('irc.freenode.org', 6667,
                  # 'untwistedbot euler euler :Ameliabot',       
                  # 'NickServ IDENTIFY nick_passwd',    
                  # 'bot_passwd', VIRTUALIFE_CHANNEL_SCHEME, PLUGIN_SCHEME)
+
 
 
 

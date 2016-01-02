@@ -1,5 +1,16 @@
 """
+Overview
+========
 
+Used to download files from the bot.
+
+Commands
+========
+
+Command: @dcc-send filename port
+Description: Send file whose name is filename to the nick that issued the command.
+
+See: booklist plugin for listing shared files.
 """
 
 from untwisted.network import *
@@ -17,7 +28,7 @@ class Send(object):
         self.folder = folder
         xmap(server, 'CMSG', self.dcc_send)
 
-    @command('@ircshare-send filename port')
+    @command('@dcc-send filename port')
     def dcc_send(self, server, nick, user, host, target, msg, filename, port):
     
         path = join(self.folder, filename)
@@ -51,6 +62,7 @@ class Send(object):
         
         
 install = Send
+
 
 
 
