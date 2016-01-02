@@ -111,8 +111,8 @@ sys.path.append(join(expanduser('~'), '.amelia'))
 # The plugin imports.
 
 # from ameliabot.plugins import join
-# from ameliabot.plugins import logmsg
 # from ameliabot.plugins import spam
+from ameliabot.plugins import logmsg
 from ameliabot.plugins import quick_search
 from ameliabot.plugins import tell
 from ameliabot.plugins import troll
@@ -128,8 +128,8 @@ from ameliabot.plugins import ircadm
 from ameliabot.plugins import help
 from ameliabot.plugins.quote import quote
 from ameliabot.plugins import booklist
-from ameliabot.plugins import dccs
-from ameliabot.plugins import dccg
+from ameliabot.plugins import dcc_send
+from ameliabot.plugins import dcc_get
 from ameliabot.plugins import translator
 from ameliabot.plugins import polyglot
 from ameliabot.plugins import lichess
@@ -150,8 +150,9 @@ def PLUGIN_SCHEME(server):
     """
 
     # join.install(server)
-    # logmsg.LogMsg(server, '/home/tau')
     # spam.install(server, db=['Ameliabot rocks', 'Use ameliabot'], excpt=['#freenode'])
+    # logmsg.LogMsg(server, '/home/tau')
+
     quick_search.install(server)
     tell.install(server)
     troll.install(server, 'aehiou', 4, 16)
@@ -172,28 +173,44 @@ def PLUGIN_SCHEME(server):
     lichess.install(server)
 
     # Used to share files, set the correct folder where the files would be in.
-    booklist.BookList(server, '/home/tau/ircshare')
-    dccs.install(server, '/home/tau/ircshare')
-    dccg.install(server, '/home/tau/ircshare')
+    # booklist.BookList(server, '/home/tau/ircshare')
+    # dcc_send.install(server, '/home/tau/ircshare')
+    # dcc_get.install(server, '/home/tau/ircshare')
 
 ##############################################################################
 # The channel where the bot will stay when at freenode.
-# CHANNEL_SCHEME = ['#ameliabot', '#vy']
+FREENODE_CHANNEL_SCHEME = ['#ameliabot', '#vy']
 
 ##############################################################################
 # It tells the bot to connect to freenode then use the plugins
 # that we have defined in PLUGIN_SCHEME handle.
 # It will join the channels #ameliabot, #vy and ##calculus at irc.freenode.org
-# server = connect('irc.freenode.org', 6667, 
-                 # 'ameliabot',                                 
-                 # 'untwistedbot euler euler :Ameliabot',       
-                 # 'PRIVMSG nickserv :IDENTIFY nick_passwd',    
-                 # 'bot_passwd', CHANNEL_SCHEME, PLUGIN_SCHEME)
+server = connect('irc.freenode.org', 6667, 
+                 'ameliabot',                                 
+                 'untwistedbot euler euler :Ameliabot',       
+                 'PRIVMSG nickserv :IDENTIFY nick_passwd',    
+                 'bot_passwd', FREENODE_CHANNEL_SCHEME, PLUGIN_SCHEME)
 
 ##############################################################################
 
 # It is possible to have more than one connection per bot process. 
 # For such just calls connect as many times as needed.
+# VIRTUALIFE_CHANNEL_SCHEME = ['#oldcine']
+##############################################################################
+
+# server = connect('irc.virtualife.com.br', 6667, 
+                 # 'ameliabot',                                 
+                 # 'untwistedbot euler euler :Ameliabot',       
+                 # 'NickServ IDENTIFY nick_passwd',    
+                 # 'bot_passwd', VIRTUALIFE_CHANNEL_SCHEME, PLUGIN_SCHEME)
+
+
+
+
+
+
+
+
 ~~~
 
 After setting up the irc network, irc channels, nick, nick password then it is possible 
@@ -257,6 +274,7 @@ Support on at irc
 Network: irc.freenode.org
 Channel: #vy
 ~~~
+
 
 
 
