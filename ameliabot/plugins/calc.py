@@ -40,13 +40,6 @@ class Calculate(object):
     
 install = Calculate
 
-print 'shit'
-
-
-
-
-
-
 
 
 
