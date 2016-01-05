@@ -59,8 +59,18 @@ def PLUGIN_SCHEME(server):
     calc.install(server, '4WERXG-VAGETKREGX')
     url_title.install(server)
     codebox.install(server)
-    codenv.install(server, 'python', '#py', '#end')
-    codenv.install(server, 'c', '@c', '@end')
+    codenv.install(server, 'python', '=py', '=end')
+    codenv.install(server, 'c', '=c', '=end')
+    codenv.install(server, 'c++', '=c++', '=end')
+    codenv.install(server, 'd', '=d', '=end')
+    codenv.install(server, 'lua', '=lua', '=end')
+    codenv.install(server, 'ocaml', '=ocaml', '=end')
+    codenv.install(server, 'php', '=php', '=end')
+    codenv.install(server, 'perl', '=perl', '=end')
+    codenv.install(server, 'ruby', '=ruby', '=end')
+    codenv.install(server, 'scheme', '=scheme', '=end')
+    codenv.install(server, 'tcl', '=tcl', '=end')
+
     note.install(server)
     pipe.install(server)
     seen.install(server)
@@ -103,6 +113,7 @@ server = connect('irc.freenode.org', 6667,
                  # 'untwistedbot euler euler :Ameliabot',       
                  # 'NickServ IDENTIFY nick_passwd',    
                  # 'bot_passwd', VIRTUALIFE_CHANNEL_SCHEME, PLUGIN_SCHEME)
+
 
 
 

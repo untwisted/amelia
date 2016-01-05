@@ -9,19 +9,19 @@ other langs like c, haskell etc.
 Example
 =======
 
-<\tau> #py
+<\tau> =py
 <\tau> def calc():
 <\tau> 	print 'hello world'
 <\tau> calc()
-<\tau> #end
+<\tau> =end
 <\amelia>  hello world
 
-<\tau> @c
+<\tau> =c
 <\tau> int main(int argv, char *argv[]) {
 <\tau> 	printf("hello world");
 <\tau> 	return 0;
 <\tau> }
-<\tau> @end
+<\tau> =end
 <\amelia> : error: conflicting types for 'argv' : error: previous definition of 'argv' was here
 
 """
@@ -57,6 +57,7 @@ class Codenv(object):
             send_msg(server, target, url)
 
 install = Codenv
+
 
 
 
