@@ -14,9 +14,9 @@ See: booklist plugin for listing shared files.
 """
 
 from untwisted.network import *
-from untwisted.utils.stdio import CLOSE, CONNECT_ERR
+from untwisted.iostd import CLOSE, CONNECT_ERR
 from untwisted.plugins.irc import *
-from untwisted.tools import ip_to_long
+from untwisted.iputils import ip_to_long
 from os.path import getsize, join
 from socket import error
 from ameliabot.cmd import command
@@ -62,6 +62,8 @@ class Send(object):
         
         
 install = Send
+
+
 
 
 

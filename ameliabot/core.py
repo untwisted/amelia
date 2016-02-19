@@ -1,6 +1,6 @@
 from untwisted.network import Spin, xmap
-from untwisted.utils.stdio import *
-from untwisted.utils.shrug import *
+from untwisted.iostd import Client, Stdin, Stdout, CLOSE, CONNECT_ERR
+from untwisted.splits import Shrug, FOUND, logcon
 from untwisted.plugins.irc import *
 from socket import socket, AF_INET, SOCK_STREAM
 from ameliabot import adm
@@ -67,6 +67,7 @@ def connect(servaddr, port, nick, user, nick_passwd, adm_passwd, chan_list, plug
 
     server.connect_ex((ip, port))
     return server
+
 
 
 

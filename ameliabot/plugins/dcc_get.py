@@ -15,8 +15,8 @@ that are sent to the bot it will be saved in directory that was chosen.
 from untwisted.plugins.irc import *
 from os.path import isfile, join
 from untwisted.network import xmap
-from untwisted.utils.stdio import CLOSE, CONNECT_ERR
-from untwisted.tools import long_to_ip
+from untwisted.iostd import CLOSE, CONNECT_ERR
+from untwisted.iputils import long_to_ip
 
 class Get(object):
     def __init__(self, server, folder):
@@ -45,6 +45,8 @@ class Get(object):
     
     
 install = Get
+
+
 
 
 

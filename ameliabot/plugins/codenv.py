@@ -28,7 +28,8 @@ Example
 
 import libpad
 from untwisted.plugins.irc import send_msg
-from untwisted.network import hold, xmap
+from untwisted.network import xmap
+from untwisted.tools import coroutine
 
 class Codenv(object):
     def __init__(self, server, lang, start_tag, end_tag, max_width=512 * 3):
@@ -38,13 +39,13 @@ class Codenv(object):
         self.end_tag   = end_tag
         xmap(server, 'CMSG', self.process)
 
+    @coroutine
     def process(self, server, nick, user, host, target, msg):
         if not msg == self.start_tag: return
         code = ''
-        flag = hold(server, 'CMSG')
 
         while True:
-            event, args = yield flag 
+            args = yield server, 'CMSG'
             if args[4] == target and args[3] == host:
                 if args[5] == self.end_tag:
                     break
@@ -57,6 +58,7 @@ class Codenv(object):
             send_msg(server, target, url)
 
 install = Codenv
+
 
 
 

@@ -1,7 +1,6 @@
 """
 """
 
-from untwisted.task import sched
 from untwisted.network import xmap
 from random import *
 from re import split
@@ -24,6 +23,7 @@ class Quote(object):
         send_msg(server, target, quote)
     
 install = Quote
+
 
 
 
