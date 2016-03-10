@@ -4,6 +4,7 @@ from untwisted.splits import Shrug, FOUND, logcon
 from untwisted.plugins.irc import *
 from socket import socket, AF_INET, SOCK_STREAM
 from ameliabot import adm
+from untwisted.tools import coroutine
 
 def connect(servaddr, port, nick, user, nick_passwd, adm_passwd, chan_list, plugmap):
     sock   = socket(AF_INET, SOCK_STREAM)
@@ -16,11 +17,12 @@ def connect(servaddr, port, nick, user, nick_passwd, adm_passwd, chan_list, plug
         for ind in chan_list:
             send_cmd(server, 'JOIN %s' % ind)
 
+    @coroutine
     def get_myaddr(server, servaddr, nick, msg):
         server.nick = nick
         send_cmd(server, 'USERHOST %s' % nick)
-        _, args        = yield hold(server, '302')
-        _, _, _, ident = args
+        args        = yield server, '302'
+        _, _, ident = args
         user, myaddr   = ident.split('@')
         server.myaddr  = myaddr
 
@@ -67,6 +69,7 @@ def connect(servaddr, port, nick, user, nick_passwd, adm_passwd, chan_list, plug
 
     server.connect_ex((ip, port))
     return server
+
 
 
 
