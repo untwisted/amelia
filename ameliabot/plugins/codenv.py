@@ -43,14 +43,13 @@ class Codenv(object):
     def process(self, server, nick, user, host, target, msg):
         if not msg == self.start_tag: return
         code = ''
-
+        
         while True:
             args = yield server, 'CMSG'
-            if args[4] == target and args[3] == host:
-                if args[5] == self.end_tag:
+            if args[3] == target and args[2] == host:
+                if args[4] == self.end_tag:
                     break
-                code = code + args[5] + '\n'
-            
+                code = code + args[4] + '\n'
         url, output = libpad.sandbox(code, self.lang)
         if len(output) <= self.max_width:
             send_msg(server, target, output)
@@ -58,6 +57,7 @@ class Codenv(object):
             send_msg(server, target, url)
 
 install = Codenv
+
 
 
 
