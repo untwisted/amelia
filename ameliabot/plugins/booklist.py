@@ -30,12 +30,12 @@ class BookList(object):
     def list_folder(self, server, nick, user, host, target, msg):
         """
         """
-        print 'testt'
         content = '\n'.join(os.listdir(self.folder))
     
         url, _ = libpad.sandbox(content, '') 
         send_msg(server, target, url)
         
+
 
 
 
