@@ -35,16 +35,17 @@ class Get(object):
             dccclient = DccClient(long_to_ip(int(address)), 
                                         int(port), fd, int(size)) 
     
-            def is_done(spin, msg):
+            def is_done(dcclient, msg):
                 send_msg(server, nick, msg)
                 fd.close()
     
             xmap(dccclient, DONE, is_done, 'Done.')
-            xmap(dccclient, CLOSE, lambda spin, err: is_done(spin, 'Failed.'))
-            xmap(dccclient, CONNECT_ERR, lambda spin, err: is_done("It couldn't connect."))
+            xmap(dccclient, CLOSE, lambda dccclient, spin, err: is_done(spin, 'Failed.'))
+            xmap(dccclient, CONNECT_ERR, lambda dccclient, spin, err: is_done("It couldn't connect."))
     
     
 install = Get
+
 
 
 
