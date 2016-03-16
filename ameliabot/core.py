@@ -1,6 +1,6 @@
 from untwisted.network import Spin, xmap
 from untwisted.iostd import Client, Stdin, Stdout, CLOSE, CONNECT_ERR
-from untwisted.splits import Shrug, logcon
+from untwisted.splits import Terminator, logcon
 from untwisted.plugins.irc import *
 from socket import socket, AF_INET, SOCK_STREAM
 from ameliabot import adm
@@ -33,7 +33,7 @@ def connect(servaddr, port, nick, user, nick_passwd, adm_passwd, chan_list, plug
     def handle_connect(server):
         Stdin(server)
         Stdout(server)
-        Shrug(server)
+        Terminator(server)
 
         Irc(server)
         CTCP(server)
@@ -69,6 +69,7 @@ def connect(servaddr, port, nick, user, nick_passwd, adm_passwd, chan_list, plug
 
     server.connect_ex((ip, port))
     return server
+
 
 
 
