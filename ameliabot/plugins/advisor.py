@@ -7,14 +7,13 @@ import os
 import re
 
 class Advisor(object):
-    def __init__(self, server, questions, answers, 
+    def __init__(self, server, questions, 
                             suggestions, pmed_file='pmed', timeout=60 * 3):
         """
 
         """
         
         self.questions   = self.load(questions)
-        self.answers     = self.load(answers)
         self.suggestions = self.load(suggestions)
         self.timeout     = timeout
         self.pmed        = self.load(pmed_file)
@@ -27,7 +26,7 @@ class Advisor(object):
         return re.split('\n+', fd.read().strip().lower())
 
     def check_answer(self, server, nick, user, host, target, msg):
-        if (nick in self.pmed or host in self.pmed) and msg.lower() in self.answers:
+        if nick in self.pmed or host in self.pmed:
             Timer(randint(0, self.timeout), lambda : 
                              send_msg(server, nick, choice(self.suggestions)))
 
@@ -45,6 +44,7 @@ class Advisor(object):
             fd.write('%s\n%s\n' % (nick, host))
 
 install = Advisor
+
 
 
 

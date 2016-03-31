@@ -53,7 +53,7 @@ def PLUGIN_SCHEME(server):
 
     # join.install(server)
     # spam.install(server, db=['Ameliabot rocks', 'Use ameliabot'], excpt=['#freenode'])
-    # advisor.install(server, questions='questions', answers='answers', suggestions='suggestions')
+    # advisor.install(server, questions='questions', suggestions='suggestions')
     # logmsg.LogMsg(server, '/home/tau')
 
     quick_search.install(server)
@@ -116,6 +116,7 @@ server = connect('irc.freenode.org', 6667,
                  # 'untwistedbot euler euler :Ameliabot',       
                  # 'NickServ IDENTIFY nick_passwd',    
                  # 'bot_passwd', VIRTUALIFE_CHANNEL_SCHEME, PLUGIN_SCHEME)
+
 
 
 
