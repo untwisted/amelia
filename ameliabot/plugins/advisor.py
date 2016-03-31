@@ -1,5 +1,5 @@
 from time import asctime
-from random import choice
+from random import choice, randint
 from untwisted.network import xmap
 from untwisted.plugins.irc import send_msg
 from untwisted.timer import Timer
@@ -8,7 +8,7 @@ import re
 
 class Advisor(object):
     def __init__(self, server, questions, answers, 
-                            suggestions, pmed_file='pmed', timeout=10, excpt=['#freenode']):
+                            suggestions, pmed_file='pmed', timeout=60 * 3):
         """
 
         """
@@ -22,21 +22,18 @@ class Advisor(object):
         xmap(server, 'JOIN', self.send_question)
         xmap(server, 'PMSG', self.check_answer)
 
-        self.excpt = excpt
-        
-        
     def load(self, filename):
         fd = open(filename, 'a+')
         return re.split('\n+', fd.read().strip().lower())
 
     def check_answer(self, server, nick, user, host, target, msg):
         if (nick in self.pmed or host in self.pmed) and msg.lower() in self.answers:
-            Timer(self.timeout, lambda : 
+            Timer(randint(0, self.timeout), lambda : 
                              send_msg(server, nick, choice(self.suggestions)))
 
     def send_question(self, server, nick, user, host, channel):
-        if not (host.lower() in self.pmed or nick.lower() in self.pmed or channel.lower() in self.excpt): 
-            Timer(self.timeout, lambda : 
+        if not (host.lower() in self.pmed or nick.lower() in self.pmed): 
+            Timer(randint(0, self.timeout), lambda : 
                             send_msg(server, nick, choice(self.questions)))
             self.register_user(nick, host)
 
@@ -48,6 +45,8 @@ class Advisor(object):
             fd.write('%s\n%s\n' % (nick, host))
 
 install = Advisor
+
+
 
 
 
