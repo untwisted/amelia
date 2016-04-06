@@ -259,10 +259,8 @@ Description: Print the docs for the given plugin.
 <ameliabot>Description: Show how long a nick has been inactive.
 ~~~
 
-Ameliabot API
+Documentation
 =============
-
-**HOWTO**
 
 [MANUAL.md](MANUAL.md)
 
