@@ -2,8 +2,8 @@
 
 from distutils.core import setup
 
-setup(name="vy",
-      version="0.1",
+setup(name="ameliabot",
+      version="1.0.0",
       packages=["ameliabot", 
                 "ameliabot.plugins",
                 'ameliabot.plugins.quote'],
@@ -12,6 +12,7 @@ setup(name="vy",
                     'ameliabot.plugins.quote':['quote_database', '/ameliabot/plugins/quote/quote_database']},
       author="Iury O. G. Figueiredo",
       author_email="ioliveira@id.uff.br")
+
 
 
 
