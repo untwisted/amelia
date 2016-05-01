@@ -223,11 +223,14 @@ Irc Channel
 **Network:**
 irc.freenode.org
 
-**Channel:**
-#vy
+
+**Channel:** 
+\#untwisted
+
 
 **Nick:**
 Tau
+
 
 
 
