@@ -36,44 +36,18 @@ Features
 Install
 =======
 
+**Note:** 
+Ameliabot demands python2.
+
 ~~~
 pip install untwisted
 pip install ehp
 pip install libpad
 pip install gsearch
-pip install ameliabot    
 pip install libdict
 pip install wolframalpha
+pip install ameliabot
 ~~~
-
-from source
-
-~~~
-cd /tmp
-git clone https://github.com/iogf/untwisted.git untwisted-code
-git clone https://github.com/iogf/ehp.git ehp-code
-git clone https://github.com/iogf/libpad.git libpad-code
-git clone https://github.com/iogf/gsearch.git gsearch-code
-git clone https://github.com/iogf/libdict.git libdict-code
-git clone https://github.com/iogf/ameliabot.git ameliabot-code
-
-cd /tmp/untwisted-code
-python setup.py install
-cd /tmp/ehp-code
-python setup.py install
-cd /tmp/libpad-code
-python setup.py install
-cd /tmp/gsearch-code
-python setup.py install
-cd /tmp/ameliabot-code
-python setup.py install
-cd /tmp/libdict-code
-python setup.py install
-~~~
-
-
-**Note:** 
-Ameliabot demands python2.
 
 Usage
 =====
@@ -273,6 +247,7 @@ Support
 **Network:** irc.freenode.org
 
 **Channel:** #untwisted
+
 
 
 

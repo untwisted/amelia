@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python2
 
 from distutils.core import setup
 
@@ -17,6 +17,7 @@ setup(name="ameliabot",
       keywords=['irc', 'ircbot', 'untwisted', 'freenode', 'ameliabot', 'amelia'],
       classifiers=[],
       description="A nifty IRC Bot written on top of untwisted framework")
+
 
 
 
