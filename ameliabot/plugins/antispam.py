@@ -17,7 +17,7 @@ from ameliabot.cmd import regcmd
 import time
 
 class AntiSpam(object):
-    def __init__(self, server, n_lines, n_secs, cmd='kick {chan} {nick} :Amelia rocks!'):
+    def __init__(self, server, n_lines, n_secs, cmd):
         """
         The n_lines means the number of lines per n_secs.
 
@@ -40,9 +40,10 @@ class AntiSpam(object):
             self.data[host][0], self.data[host][1] = 0, time.time()
             if self.n_lines/float(self.n_secs) < count/(time.time() - start):
                 send_cmd(server, self.cmd.format(nick=nick, 
-                                            chan=target, host=host, user=user))
+                         chan=target, host=host, user=user))
 
 install = AntiSpam
+
 
 
 
