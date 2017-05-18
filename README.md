@@ -61,22 +61,16 @@ It will create the following dir/files.
 
 ~~~
 
+Then
+
+~~~
+amelia --run
+~~~
+
 Documentation
 =============
 
 [Wiki](https://github.com/iogf/ameliabot/wiki)
-
-Support
-=======
-
-#### Freenode
-
-**Network:** irc.freenode.org
-
-**Channel:** #untwisted
-
-
-
 
 
 
