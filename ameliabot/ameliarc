@@ -1,4 +1,5 @@
 from ameliabot.core import connect
+from ameliabot.plugins import load
 ##############################################################################
 import sys
 
@@ -39,97 +40,66 @@ from ameliabot.plugins import antispam
 
 
 ##############################################################################
+# Initialize a connection to the irc server
 
-# Define the set of plugins that will be available.
-# You can define a different scheme for each server.
+freenode = connect('irc.freenode.org', 6667, 
+'ameliabot', 'untwistedbot euler euler :Ameliabot',       
+'PRIVMSG nickserv :IDENTIFY nick_passwd',    
+'bot_passwd', ['#untwisted', '#vy'])
 
-def PLUGIN_SCHEME(server):
-    """
-    These are all ameliabot built in plugins.
-    You can have more than one scheme for irc networks.
+# Install plugins in the connection.
+# load(freenode, join)
+# load(freenode, spam, db=['alpha', 'beta'])
+# load(freenode, advisor, questions='questions', suggestions='suggestions')
 
-    Just implement new PLUGIN_SCHEME functions then pass it as argument
-    to connect function.
-    """
+load(freenode, quick_search)
+load(freenode, tell)
+load(freenode, troll, 'aeiuh', 8, 15)
+load(freenode, calc, '4WERXG-VAGETKREGX')
+load(freenode, url_title)
+load(freenode, codebox)
+load(freenode, codenv, 'python', '=py', '=end')
+load(freenode, codenv , 'c', '=c', '=end')
+load(freenode, codenv, 'c++', '=c++', '=end')
+load(freenode, codenv, 'd', '=d', '=end')
+load(freenode, codenv, 'lua', '=lua', '=end')
+load(freenode, codenv, 'ocaml', '=ocaml', '=end')
+load(freenode, codenv, 'php', '=php', '=end')
+load(freenode, codenv, 'perl', '=perl', '=end')
+load(freenode, codenv, 'ruby', '=ruby', '=end')
+load(freenode, codenv, 'scheme', '=scheme', '=end')
+load(freenode, codenv, 'tcl', '=tcl', '=end')
+load(freenode, note)
+load(freenode, pipe)
+load(freenode, seen)
+load(freenode, keep_alive)
+load(freenode, ircadm)
+load(freenode, help)
+load(freenode, quote)
+load(freenode, translator)
+load(freenode, polyglot)
+load(freenode, lichess)
+load(freenode, antispam, n_lines=5, n_secs=5, 
+cmd='kick {chan} {nick} :Amelia rocks!')
 
-    # join.install(server)
-    # spam.install(server, db=['Ameliabot rocks', 'Use ameliabot'], excpt=['#freenode'])
-    # advisor.install(server, questions='questions', suggestions='suggestions')
-    # logmsg.LogMsg(server, '/home/tau')
-
-    quick_search.install(server)
-    tell.install(server)
-    troll.install(server, 'aehiou', 4, 16)
-    calc.install(server, '4WERXG-VAGETKREGX')
-    url_title.install(server)
-    codebox.install(server)
-    codenv.install(server, 'python', '=py', '=end')
-    codenv.install(server, 'c', '=c', '=end')
-    codenv.install(server, 'c++', '=c++', '=end')
-    codenv.install(server, 'd', '=d', '=end')
-    codenv.install(server, 'lua', '=lua', '=end')
-    codenv.install(server, 'ocaml', '=ocaml', '=end')
-    codenv.install(server, 'php', '=php', '=end')
-    codenv.install(server, 'perl', '=perl', '=end')
-    codenv.install(server, 'ruby', '=ruby', '=end')
-    codenv.install(server, 'scheme', '=scheme', '=end')
-    codenv.install(server, 'tcl', '=tcl', '=end')
-
-    note.install(server)
-    pipe.install(server)
-    seen.install(server)
-    keep_alive.install(server)
-    ircadm.install(server)
-    help.install(server)
-    quote.install(server)
-    translator.install(server)
-    polyglot.install(server)
-    lichess.install(server)
-
-    # The n_lines arg determins how many lines should be allowed in n_secs.
-    # The cmd is the command to be executed if the rate is overriden.
-    # For akicking:
-    # cmd = 'chanserv akick {chan} add *!*@{host} : get out!
-    antispam.install(server, n_lines=5, n_secs=5,  cmd='kick {chan} {nick} :Amelia rocks!')
-
-    # Used to share files, set the correct folder where the files would be in.
-    # booklist.BookList(server, '/home/tau/ircshare')
-    # dcc_send.install(server, '/home/tau/ircshare')
-    # dcc_get.install(server, '/home/tau/ircshare')
+# load(freenode, dcc_send, '/home/tau/Downloads')
+# load(freenode, dcc_get, '/home/tau/Downloads')
 
 ##############################################################################
-# The channel where the bot will stay when at freenode.
-FREENODE_CHANNEL_SCHEME = ['#ameliabot', '#vy']
+# Initialize another connection...
 
-##############################################################################
-# It tells the bot to connect to freenode then use the plugins
-# that we have defined in PLUGIN_SCHEME handle.
-# It will join the channels #ameliabot, #vy and ##calculus at irc.freenode.org
-server = connect('irc.freenode.org', 6667, 
-                 'ameliabot',                                 
-                 'untwistedbot euler euler :Ameliabot',       
-                 'PRIVMSG nickserv :IDENTIFY nick_passwd',    
-                 'bot_passwd', FREENODE_CHANNEL_SCHEME, PLUGIN_SCHEME)
+# virtualife = connect('irc.virtualife.com.br', 6667, 
+# 'ameliabot',                                 
+# 'untwistedbot euler euler :Ameliabot',       
+# 'NickServ IDENTIFY nick_passwd',    
+# 'bot_passwd', VIRTUALIFE_CHANNEL_SCHEME, PLUGIN_SCHEME)
 
-##############################################################################
-
-# It is possible to have more than one connection per bot process. 
-# For such just calls connect as many times as needed.
-# VIRTUALIFE_CHANNEL_SCHEME = ['#oldcine']
-##############################################################################
-
-# server = connect('irc.virtualife.com.br', 6667, 
-                 # 'ameliabot',                                 
-                 # 'untwistedbot euler euler :Ameliabot',       
-                 # 'NickServ IDENTIFY nick_passwd',    
-                 # 'bot_passwd', VIRTUALIFE_CHANNEL_SCHEME, PLUGIN_SCHEME)
-
-
-
-
-
-
-
+# load(virtualife, quick_search)
+# load(virtualife, tell)
+# load(virtualife, troll, 'aeiuh', 8, 15)
+# load(virtualife, calc, '4WERXG-VAGETKREGX')
+# load(virtualife, url_title)
+# load(virtualife, codebox)
 
 
 

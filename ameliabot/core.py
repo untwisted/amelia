@@ -1,12 +1,12 @@
 from untwisted.network import Spin, xmap
-from untwisted.iostd import Client, Stdin, Stdout, CLOSE, CONNECT_ERR
+from untwisted.iostd import Client, Stdin, Stdout, CLOSE, CONNECT_ERR, CONNECT
 from untwisted.splits import Terminator, logcon
-from untwisted.plugins.irc import *
-from socket import socket, AF_INET, SOCK_STREAM
+from untwisted.plugins.irc import Irc, CTCP, Misc, send_cmd
+from socket import socket, AF_INET, SOCK_STREAM, socket, gethostbyname
 from ameliabot import adm
 from untwisted.tools import coroutine
 
-def connect(servaddr, port, nick, user, nick_passwd, adm_passwd, chan_list, plugmap):
+def connect(servaddr, port, nick, user, nick_passwd, adm_passwd, chan_list):
     sock   = socket(AF_INET, SOCK_STREAM)
     ip     = gethostbyname(servaddr)
     server = Spin(sock)
@@ -50,7 +50,6 @@ def connect(servaddr, port, nick, user, nick_passwd, adm_passwd, chan_list, plug
         xmap(server, '376', auto_join)
         xmap(server, '376', get_myaddr)
         xmap(server, 'NICK', update_nick)
-        plugmap(server)
 
         server.servaddr    = servaddr
         server.port        = port
@@ -59,7 +58,6 @@ def connect(servaddr, port, nick, user, nick_passwd, adm_passwd, chan_list, plug
         server.chan_list   = chan_list
         server.nick_passwd = nick_passwd
         server.adm_passwd  = adm_passwd
-        server.plugmap     = plugmap
 
         send_cmd(server, 'NICK %s' % nick)
         send_cmd(server, 'USER %s' % user) 
@@ -69,9 +67,6 @@ def connect(servaddr, port, nick, user, nick_passwd, adm_passwd, chan_list, plug
 
     server.connect_ex((ip, port))
     return server
-
-
-
 
 
 
