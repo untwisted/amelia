@@ -92,7 +92,7 @@ cmd='kick {chan} {nick} :Amelia rocks!')
 # 'ameliabot',                                 
 # 'untwistedbot euler euler :Ameliabot',       
 # 'NickServ IDENTIFY nick_passwd',    
-# 'bot_passwd', VIRTUALIFE_CHANNEL_SCHEME, PLUGIN_SCHEME)
+# 'bot_passwd', ['#brasil'])
 
 # load(virtualife, quick_search)
 # load(virtualife, tell)
