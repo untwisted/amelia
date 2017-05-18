@@ -44,33 +44,11 @@ pip2 install -r requeriments.txt
 pip2 install ameliabot
 ~~~
 
-Usage
-=====
-
-The command below should be issued after the installation.
-
-~~~
-amelia --init
-~~~
-
-It will create the following dir/files.
-
-~~~
-~/.amelia/
-    ameliarc
-
-~~~
-
-Then
-
-~~~
-amelia --run
-~~~
-
 Documentation
 =============
 
 [Wiki](https://github.com/iogf/ameliabot/wiki)
+
 
 
 
