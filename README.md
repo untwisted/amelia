@@ -40,7 +40,7 @@ Install
 Ameliabot demands python2.
 
 ~~~
-pip2 install -r requeriments.txt
+pip2 install -r requirements.txt
 pip2 install ameliabot
 ~~~
 
@@ -48,6 +48,7 @@ Documentation
 =============
 
 [Wiki](https://github.com/iogf/ameliabot/wiki)
+
 
 
 
