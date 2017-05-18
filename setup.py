@@ -3,7 +3,7 @@
 from distutils.core import setup
 
 setup(name="ameliabot",
-      version="1.2.0",
+      version="1.3.0",
       packages=["ameliabot", 
                 "ameliabot.plugins",
                 'ameliabot.plugins.quote'],
@@ -17,6 +17,7 @@ setup(name="ameliabot",
       keywords=['irc', 'ircbot', 'untwisted', 'freenode', 'ameliabot', 'amelia'],
       classifiers=[],
       description="A nifty IRC Bot written on top of untwisted framework")
+
 
 
 
