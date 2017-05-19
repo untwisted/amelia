@@ -16,7 +16,6 @@ sys.path.append(join(expanduser('~'), '.amelia'))
 # from ameliabot.plugins import advisor
 
 from ameliabot.plugins import logmsg
-from ameliabot.plugins import quick_search
 from ameliabot.plugins import tell
 from ameliabot.plugins import troll
 from ameliabot.plugins import calc
@@ -52,7 +51,6 @@ freenode = connect('irc.freenode.org', 6667,
 # load(freenode, spam, db=['alpha', 'beta'])
 # load(freenode, advisor, questions='questions', suggestions='suggestions')
 
-load(freenode, quick_search)
 load(freenode, tell)
 load(freenode, troll, 'aeiuh', 8, 15)
 load(freenode, calc, '4WERXG-VAGETKREGX')
@@ -100,6 +98,7 @@ cmd='kick {chan} {nick} :Amelia rocks!')
 # load(virtualife, calc, '4WERXG-VAGETKREGX')
 # load(virtualife, url_title)
 # load(virtualife, codebox)
+
 
 
 
