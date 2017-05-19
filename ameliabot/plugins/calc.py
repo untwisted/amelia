@@ -32,11 +32,12 @@ class Calculate(object):
     @regcmd('@calc (?P<exp>.+)$')
     def calculate(self, server, nick, user, host, target, msg, exp):
         for pod in self.client.query(exp):
-            if pod.text:
+            if getattr(pod, 'text', None):
                 send_lines(server, target,
                     pod.text.encode('utf-8'))
     
 install = Calculate
+
 
 
 
