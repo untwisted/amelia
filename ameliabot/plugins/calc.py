@@ -31,14 +31,13 @@ class Calculate(object):
     
     @regcmd('@calc (?P<exp>.+)$')
     def calculate(self, server, nick, user, host, target, msg, exp):
-        req  = self.client.query(exp)
-        data = ''
-        for pod in req:
+        for pod in self.client.query(exp):
             if pod.text:
-                data = '%s %s' % (data, pod.text)
-        send_lines(server, target, data)
+                send_lines(server, target,
+                    pod.text.encode('utf-8'))
     
 install = Calculate
+
 
 
 
