@@ -1,8 +1,10 @@
 untwisted
+quickirc
 ehp
 libpad
 libdict
 wolframalpha
 ameliabot
+
 
 

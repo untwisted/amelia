@@ -1,7 +1,7 @@
 from untwisted.network import Spin, xmap
 from untwisted.iostd import Client, Stdin, Stdout, CLOSE, CONNECT_ERR, CONNECT
 from untwisted.splits import Terminator, logcon
-from untwisted.plugins.irc import Irc, CTCP, Misc, send_cmd
+from quickirc import Irc, CTCP, Misc, send_cmd
 from socket import socket, AF_INET, SOCK_STREAM, socket, gethostbyname
 from ameliabot import adm
 from untwisted.tools import coroutine
@@ -67,6 +67,7 @@ def connect(servaddr, port, nick, user, nick_passwd, adm_passwd, chan_list):
 
     server.connect_ex((ip, port))
     return server
+
 
 
 

@@ -1,5 +1,5 @@
 from untwisted.network import xmap
-from untwisted.plugins.irc import send_msg
+from quickirc import send_msg
 from ameliabot.cmd import command
 
 known = set()
@@ -17,6 +17,8 @@ def login(server, nick, user, host, target, msg, password):
 
 def is_adm(host):
     return host in known
+
+
 
 
 
