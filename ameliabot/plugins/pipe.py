@@ -16,7 +16,7 @@ Description: Remove the pipe from chan_x to chan_y.
 """
 
 from untwisted.network import xmap
-from untwisted.plugins.irc import send_msg
+from quickirc import send_msg
 from ameliabot.cmd import command
 
 mapping = dict()
@@ -47,6 +47,7 @@ def pipe_chan(server, nick, user, host, target, msg,):
 
     for ind in chan_list:
         send_msg(server, ind, '(%s)%s %s' % (target, nick, msg))
+
 
 
 

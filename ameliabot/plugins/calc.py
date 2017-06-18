@@ -19,7 +19,7 @@ Example
 
 import wolframalpha
 
-from untwisted.plugins.irc import send_msg
+from quickirc import send_msg
 from untwisted.network import xmap
 from ameliabot.cmd import regcmd
 from ameliabot.tools import send_lines
@@ -37,6 +37,7 @@ class Calculate(object):
                     pod.text.encode('utf-8'))
     
 install = Calculate
+
 
 
 

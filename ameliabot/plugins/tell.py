@@ -12,7 +12,7 @@ Description: Instructs the bot to send a note to person.
 
 """
 
-from untwisted.plugins.irc import send_msg
+from quickirc import send_msg
 from untwisted.network import xmap
 from ameliabot.cmd import command
 
@@ -23,6 +23,7 @@ def install(server):
 @command('@tell person note')
 def send(server, nick, user, host, target, msg, person, note):
         send_msg(server, person, note)
+
 
 
 

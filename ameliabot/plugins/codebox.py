@@ -19,7 +19,7 @@ Example
 """
 
 import libpad
-from untwisted.plugins.irc import send_msg
+from quickirc import send_msg
 from untwisted.network import xmap
 from ameliabot.cmd import regcmd
 
@@ -39,6 +39,7 @@ class Codebox(object):
 
 
 install = Codebox
+
 
 
 

@@ -12,7 +12,7 @@ Description: Show how long a nick has been inactive.
 
 """
 
-from untwisted.plugins.irc import send_msg
+from quickirc import send_msg
 from untwisted.network import xmap
 from ameliabot.cmd import command
 import time
@@ -47,4 +47,5 @@ class Seen(object):
 
 
 install = Seen
+
 

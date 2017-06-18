@@ -12,7 +12,7 @@ that are sent to the bot it will be saved in directory that was chosen.
 
 """
 
-from untwisted.plugins.irc import *
+from quickirc import *
 from os.path import isfile, join
 from untwisted.network import xmap
 from untwisted.iostd import CLOSE, CONNECT_ERR
@@ -45,6 +45,7 @@ class Get(object):
     
     
 install = Get
+
 
 
 

@@ -25,7 +25,7 @@ Example
 
 from ameliabot.adm import is_adm
 from untwisted.network import xmap
-from untwisted.plugins.irc import send_cmd
+from quickirc import send_cmd
 from ameliabot.cmd import command
 
 def install(server, *args):
@@ -37,6 +37,7 @@ def irc_cmd(server, nick, user, host, target, msg, data):
     # is_adm(host) checks whether the user is authenticated
     # in order to send back to the server the irc command.
     if is_adm(host): send_cmd(server, data)
+
 
 
 

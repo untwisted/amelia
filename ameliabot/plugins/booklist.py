@@ -14,7 +14,7 @@ Description: List all files that exist in a given folder that was shared.
 
 import libpad
 from untwisted.network import xmap
-from untwisted.plugins.irc import send_msg
+from quickirc import send_msg
 from ameliabot.cmd import command
 import os
 
@@ -35,6 +35,7 @@ class BookList(object):
         url, _ = libpad.sandbox(content, '') 
         send_msg(server, target, url)
         
+
 
 
 

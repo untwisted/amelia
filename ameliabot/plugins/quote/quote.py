@@ -5,7 +5,7 @@ from untwisted.network import xmap
 from random import *
 from re import split
 from os.path import dirname, join
-from untwisted.plugins.irc import send_msg
+from quickirc import send_msg
 from ameliabot.cmd import command
 
 class Quote(object):
@@ -23,6 +23,7 @@ class Quote(object):
         send_msg(server, target, quote)
     
 install = Quote
+
 
 
 

@@ -27,7 +27,7 @@ Example
 """
 
 import libpad
-from untwisted.plugins.irc import send_msg
+from quickirc import send_msg
 from untwisted.network import xmap
 from untwisted.tools import coroutine
 
@@ -57,6 +57,7 @@ class Codenv(object):
             send_msg(server, target, url)
 
 install = Codenv
+
 
 
 

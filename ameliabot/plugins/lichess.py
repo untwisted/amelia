@@ -13,7 +13,7 @@ Description: Shows the player's rating on lichess.org.
 """
 
 import requests
-from untwisted.plugins.irc import send_msg
+from quickirc import send_msg
 from untwisted.network import xmap
 from ameliabot.cmd import command
 
@@ -39,3 +39,4 @@ class Lichess:
 		send_msg(server,target,str(ircOutput(result)))
 
 install = Lichess
+

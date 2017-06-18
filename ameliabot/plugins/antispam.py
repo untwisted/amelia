@@ -11,7 +11,7 @@ def PLUGIN_SCHEME(server):
 
 """
 
-from untwisted.plugins.irc import send_cmd, send_msg
+from quickirc import send_cmd, send_msg
 from untwisted.network import xmap
 from ameliabot.cmd import regcmd
 import time
@@ -43,6 +43,7 @@ class AntiSpam(object):
                          chan=target, host=host, user=user))
 
 install = AntiSpam
+
 
 
 

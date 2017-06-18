@@ -18,7 +18,7 @@ from collections import namedtuple, defaultdict
 
 from untwisted.network import xmap
 
-from untwisted.plugins.irc import send_msg
+from quickirc import send_msg
 from ameliabot.cmd import command, regcmd
 
 MAX_NOTES_PER_PEER = 2
@@ -73,6 +73,7 @@ class Note(object):
         del self.base[nick.lower()]
 
 install = Note
+
 
 
 

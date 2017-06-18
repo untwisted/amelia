@@ -16,7 +16,7 @@ Description: Remove the user with ident from the list of users to have their msg
 
 from untwisted.network import spawn, xmap, zmap
 from libdict import GoogleTranslator
-from untwisted.plugins.irc import send_msg
+from quickirc import send_msg
 from ameliabot.cmd import command
 
 source = GoogleTranslator()
@@ -42,6 +42,7 @@ def listen(server, nick, user, target, msg, lang_x, lang_y):
 
 def split(server, nick, user, host, target, msg):
     spawn(server, host, nick, user, target, msg)
+
 
 
 

@@ -6,7 +6,7 @@ Whenever it matches a combination of letters that appear to be a laught
 it makes the bot laught as well.
 """
 
-from untwisted.plugins.irc import send_msg
+from quickirc import send_msg
 from re import search, compile
 from random import choice, randint
 from untwisted.network import xmap
@@ -30,5 +30,6 @@ class Troll(object):
         return data
 
 install = Troll
+
 
 

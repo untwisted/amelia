@@ -6,7 +6,7 @@ Used to extract url titles from links.
 
 """
 
-from untwisted.plugins.irc import send_msg
+from quickirc import send_msg
 from re import search, compile, sub
 from untwisted.network import xmap
 import requests
@@ -30,6 +30,7 @@ class UrlTitle(object):
         send_msg(server, target, title)
 
 install = UrlTitle
+
 
 
 

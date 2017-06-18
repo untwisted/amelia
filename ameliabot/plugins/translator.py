@@ -13,7 +13,7 @@ Description: Translate the data from lang1 to lang2.
 
 from libdict import GoogleTranslator
 from untwisted.network import xmap
-from untwisted.plugins.irc import send_msg
+from quickirc import send_msg
 from ameliabot.cmd import regcmd
 
 class Translator(object):
@@ -27,6 +27,7 @@ class Translator(object):
         send_msg(server, target, data)
     
 install = Translator
+
 
 
 
