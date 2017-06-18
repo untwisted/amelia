@@ -31,7 +31,6 @@ git checkout *
 cd ~/projects/ameliabot-code
 git checkout master
 git merge development
-git merge master
 git push
 git checkout development
 ##############################################################################
@@ -72,4 +71,5 @@ rm MANIFEST
 cd ~/projects/ameliabot-code
 python setup.py sdist register upload
 rm -fr dist
+
 
