@@ -1,7 +1,7 @@
 from time import asctime
 from random import choice, randint
 from untwisted.network import xmap
-from untwisted.plugins.irc import send_msg
+from quickirc import send_msg
 from untwisted.timer import Timer
 import os
 import re
@@ -44,6 +44,7 @@ class Advisor(object):
             fd.write('%s\n%s\n' % (nick, host))
 
 install = Advisor
+
 
 
 

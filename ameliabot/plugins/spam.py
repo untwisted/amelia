@@ -1,7 +1,7 @@
 from time import asctime
 from random import choice
 from untwisted.network import xmap
-from untwisted.plugins.irc import send_msg
+from quickirc import send_msg
 
 class Spam(object):
     def __init__(self, server, db=['Ameliabot rocks'], excpt=['#freenode']):
@@ -26,3 +26,4 @@ class Spam(object):
         send_msg(server, nick, msg)
     
 install = Spam
+
