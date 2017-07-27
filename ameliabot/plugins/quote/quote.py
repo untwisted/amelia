@@ -10,8 +10,8 @@ from ameliabot.cmd import command
 
 class Quote(object):
     def __init__(self, server):
-        fd   = open(join(dirname(__file__), 'quote_database'), 'r')
-        data = fd.read()
+        fd   = open(join(dirname(__file__), 'quote_database'), 'rb')
+        data = fd.read().decode('utf8', 'ignore')
         fd.close()
         self.data = split('\n+', data)
         
@@ -23,6 +23,7 @@ class Quote(object):
         send_msg(server, target, quote)
     
 install = Quote
+
 
 
 

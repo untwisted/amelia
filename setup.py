@@ -1,9 +1,9 @@
-#! /usr/bin/env python2
+#! /usr/bin/env python
 
 from distutils.core import setup
 
 setup(name="ameliabot",
-      version="1.5.0",
+      version="2.0.0",
       packages=["ameliabot", 
                 "ameliabot.plugins",
                 'ameliabot.plugins.quote'],
@@ -17,6 +17,8 @@ setup(name="ameliabot",
       keywords=['irc', 'ircbot', 'untwisted', 'freenode', 'ameliabot', 'amelia'],
       classifiers=[],
       description="A nifty IRC Bot written on top of untwisted framework")
+
+
 
 
 

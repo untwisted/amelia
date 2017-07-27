@@ -71,6 +71,15 @@ rm MANIFEST
 cd ~/projects/amelia-code
 python setup.py sdist register upload
 rm -fr dist
+##############################################################################
+# py2 to py3.
+
+cd ~/projects/ameliabot-code
+
+# Apply them.
+2to3  -w .
+
+find . -name "*.bak" -exec rm -f {} \;
 
 
 

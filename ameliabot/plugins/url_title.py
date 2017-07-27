@@ -25,11 +25,12 @@ class UrlTitle(object):
             return
         req   = requests.get(struct.group('address'))
         html  = Html()
-        dom   = html.feed(req.text.encode(req.encoding))
+        dom   = html.feed(req.text)
         title = dom.fst('title').text()
         send_msg(server, target, title)
 
 install = UrlTitle
+
 
 
 

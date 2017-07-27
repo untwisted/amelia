@@ -1,4 +1,4 @@
-#! /usr/bin/env python2
+#! /usr/bin/env python
 
 from optparse import OptionParser
 from ameliabot import ircbot
@@ -10,6 +10,8 @@ parser.add_option("-i", "--init", action="callback", callback=lambda *args: ircb
 parser.add_option("-r", "--run", action="callback", callback=lambda *args: ircbot.run())
 
 (opt, args) = parser.parse_args()
+
+
 
 
 

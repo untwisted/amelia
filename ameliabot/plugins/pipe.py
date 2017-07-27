@@ -31,7 +31,7 @@ def pipe_add(server, nick, user, host, target,
                msg, chan_x, chan_y):
 
     chan_x, chan_y = chan_x.upper(), chan_y.upper()
-    if not mapping.has_key((server, chan_x)):
+    if (server, chan_x) not in mapping:
         mapping[(server, chan_x)] = list()
     mapping[(server, chan_x)].append(chan_y)
 

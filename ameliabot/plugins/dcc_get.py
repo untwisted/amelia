@@ -23,9 +23,10 @@ class Get(object):
         self.folder = folder
         xmap(server, 'DCC SEND', self.dcc_get)
 
-    def dcc_get(self, server, (nick, user, host, 
-                        target, msg), filename, address, port, size):
+    def dcc_get(self, server, xxx_todo_changeme, filename, address, port, size):
     
+        (nick, user, host, 
+                        target, msg) = xxx_todo_changeme
         path = join(self.folder, filename)
 
         if isfile(path):      
