@@ -22,9 +22,9 @@ def run():
     rc  = join(dir, 'ameliarc')
 
     if not exists(rc): 
-        print 'You must call amelia --init.'; return
+        print('You must call amelia --init.'); return
     ENV = dict()
-    execfile(rc, ENV)
+    exec(compile(open(rc).read(), rc, 'exec'), ENV)
     core.gear.mainloop()
     
 

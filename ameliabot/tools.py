@@ -4,7 +4,7 @@ from re import escape
 
 def consume(seq):
     try:
-        seq.next()
+        next(seq)
     except StopIteration:
         raise CancelCall
 

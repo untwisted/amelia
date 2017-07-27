@@ -1,11 +1,12 @@
 untwisted>=1.1.0
-quickirc>=1.0.0
-ehp
+quickirc>=1.1.1
+ehp==2.0.0
 libpad
 libdict
 wolframalpha
-ameliabot
-lax==0.3
+lax
+
+
 
 
 

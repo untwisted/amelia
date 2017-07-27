@@ -2,22 +2,22 @@ from quickirc import send_msg
 from untwisted.network import xmap
 from ameliabot.cmd import regcmd
 from liblax.parser import run
-import urllib
-import urllib2
+import urllib.request, urllib.parse, urllib.error
+import urllib.request, urllib.error, urllib.parse
 
 def post(data, title, name):
     """
     """
 
     URL               = 'http://mathb.in'
-    opener            = urllib2.build_opener()
+    opener            = urllib.request.build_opener()
     opener.addheaders = [('User-agent', 'Mozilla/5.0')]
 
     head = {'code':'$%s$' % data,
     'title': title,'name': name,
     'submit':'Save and get new URL'}
 
-    ptr = opener.open(URL, urllib.urlencode(head))
+    ptr = opener.open(URL, urllib.parse.urlencode(head))
     return ptr.geturl()
 
 class Mathb(object):

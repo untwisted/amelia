@@ -33,10 +33,10 @@ class Calculate(object):
     def calculate(self, server, nick, user, host, target, msg, exp):
         for pod in self.client.query(exp):
             if getattr(pod, 'text', None):
-                send_lines(server, target,
-                    pod.text.encode('utf-8'))
+                send_lines(server, target, pod.text)
     
 install = Calculate
+
 
 
 

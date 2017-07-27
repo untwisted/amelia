@@ -51,19 +51,19 @@ class Note(object):
             msgs.append(Message(
                 source=(nick,user,host), message=data))
             self.base[peer.lower()] = msgs
-	    send_msg(server, target,
-		'%s: note for "%s" saved.' % (nick, peer))
+            send_msg(server, target,
+            '%s: note for "%s" saved.' % (nick, peer))
 
     @command('@note-del peer')
     def note_del(self, server, nick, user, host, target, msg, peer):
         peer = peer.lower()
-	msgs = self.base.get(peer, [])
-	orig_len = len(msgs)
-	msgs = [m for m in msgs if m.source[1:] != (user, host)]
+        msgs = self.base.get(peer, [])
+        orig_len = len(msgs)
+        msgs = [m for m in msgs if m.source[1:] != (user, host)]
         if msgs: self.base[peer] = msgs
         elif peer in self.base: del self.base[peer]
-	send_msg(server, target or nick, '%s: %d notes deleted.' % (
-	    nick, orig_len - len(msgs)))
+        send_msg(server, target or nick, '%s: %d notes deleted.' % (
+            nick, orig_len - len(msgs)))
 
     def send_note(self, server, nick, user, host, channel):
         if nick.lower() not in self.base: return
@@ -73,6 +73,7 @@ class Note(object):
         del self.base[nick.lower()]
 
 install = Note
+
 
 
 
