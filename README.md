@@ -1,4 +1,4 @@
-amelia
+Amelia
 ======
 
 A flexible ircbot written on top of untwisted framework.
@@ -47,6 +47,7 @@ Documentation
 =============
 
 [Wiki](https://github.com/iogf/ameliabot/wiki)
+
 
 
 
