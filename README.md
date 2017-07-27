@@ -1,5 +1,5 @@
-ameliabot
-=========
+amelia
+======
 
 A flexible ircbot written on top of untwisted framework.
 
@@ -36,18 +36,18 @@ Features
 Install
 =======
 
-**Note:** 
-Ameliabot demands python2.
+**Note:**  Amelia demands python3 to work.
 
 ~~~
-pip2 install -r requirements.txt
-pip2 install ameliabot
+pip install -r requirements.txt
+pip install ameliabot
 ~~~
 
 Documentation
 =============
 
 [Wiki](https://github.com/iogf/ameliabot/wiki)
+
 
 
 
