@@ -36,8 +36,8 @@ from ameliabot.plugins import translator
 from ameliabot.plugins import polyglot
 from ameliabot.plugins import lichess
 from ameliabot.plugins import antispam
-from ameliabot.plugins import latex
-from ameliabot.plugins import mathb
+# from ameliabot.plugins import latex
+# from ameliabot.plugins import mathb
 
 
 ##############################################################################
@@ -81,8 +81,8 @@ load(freenode, polyglot)
 load(freenode, lichess)
 load(freenode, antispam, n_lines=5, n_secs=5, 
 cmd='kick {chan} {nick} :Amelia rocks!')
-load(freenode, latex)
-load(freenode, mathb)
+# load(freenode, latex)
+# load(freenode, mathb)
 
 # load(freenode, dcc_send, '/home/tau/Downloads')
 # load(freenode, dcc_get, '/home/tau/Downloads')
@@ -102,6 +102,7 @@ load(freenode, mathb)
 # load(virtualife, calc, '4WERXG-VAGETKREGX')
 # load(virtualife, url_title)
 # load(virtualife, codebox)
+
 
 
 
