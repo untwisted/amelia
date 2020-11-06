@@ -3,7 +3,7 @@ Overview
 ========
 
 This plugin implements a mechanism to execute code on codepad using a sophisticated approach.
-It uses a scheme of tags like #py to start a sequence of code and #end to close. It supports
+It uses a scheme of cmds like #py to start a sequence of code and #end to close. It supports
 other langs like c, haskell etc.
 
 Example
@@ -26,46 +26,38 @@ Example
 
 """
 
-import libpad
 from quickirc import send_msg
-from untwisted.network import xmap
 from untwisted.tools import coroutine
+from pytio import TioRequest
+from ameliabot.plugins.codebox import tio
 
-class Codenv(object):
-    def __init__(self, server, lang, start_tag, end_tag, max_width=512 * 3):
+class Codenv:
+    def __init__(self, server, lang, start_cmd, end_cmd, max_length=512 * 3):
         self.lang = lang
-        self.max_width = max_width
-        self.start_tag = start_tag
-        self.end_tag   = end_tag
-        xmap(server, 'CMSG', self.process)
+        self.max_length = max_length
+        self.start_cmd = start_cmd
+        self.end_cmd   = end_cmd
+        server.add_map('CMSG', self.check_msgcmd)
 
     @coroutine
-    def process(self, server, nick, user, host, target, msg):
-        if not msg == self.start_tag: return
+    def accumulate_code(self, server, nick, user, host, target, msg):
         code = ''
-        
         while True:
             args = yield server, 'CMSG'
             if args[3] == target and args[2] == host:
-                if args[4] == self.end_tag:
+                if args[4] != self.end_cmd:
+                    code = code + args[4] + '\n'
+                else:
                     break
-                code = code + args[4] + '\n'
-        url, output = libpad.sandbox(code, self.lang)
-        if len(output) <= self.max_width:
-            send_msg(server, target, output)
-        else:
-            send_msg(server, target, url)
+
+        request = TioRequest(lang=self.lang, code=code)
+        response = tio.send(request)
+        send_msg(server, target, response.result[:self.max_length])
+
+    def check_msgcmd(self, *args):
+        if args[-1]  == self.start_cmd: 
+            return self.accumulate_code(*args)
+
 
 install = Codenv
-
-
-
-
-
-
-
-
-
-
-
 
