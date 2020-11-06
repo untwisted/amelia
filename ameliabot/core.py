@@ -1,8 +1,11 @@
-from untwisted.network import Spin, xmap
-from untwisted.iostd import Client, Stdin, Stdout, CLOSE, CONNECT_ERR, CONNECT
+from socket import socket, AF_INET, SOCK_STREAM, socket, gethostbyname
+from untwisted.network import Spin
+from untwisted.client import Client
+from untwisted.sock_writer import SockWriter
+from untwisted.event import CLOSE, CONNECT_ERR, CONNECT
+from untwisted.sock_reader import SockReader
 from untwisted.splits import Terminator, logcon
 from quickirc import Irc, CTCP, Misc, send_cmd
-from socket import socket, AF_INET, SOCK_STREAM, socket, gethostbyname
 from ameliabot import adm
 from untwisted.tools import coroutine
 
@@ -31,8 +34,8 @@ def connect(servaddr, port, nick, user, nick_passwd, adm_passwd, chan_list):
             server.nick = nick_y
     
     def handle_connect(server):
-        Stdin(server)
-        Stdout(server)
+        SockWriter(server)
+        SockReader(server)
         Terminator(server)
 
         Irc(server)
@@ -41,15 +44,15 @@ def connect(servaddr, port, nick, user, nick_passwd, adm_passwd, chan_list):
         Misc(server)
         adm.install(server)
 
-        xmap(server, 'PING', lambda server, prefix, servaddr: 
-                send_cmd(server, 'PONG :%s' % servaddr))
+        server.add_map('PING', lambda server, prefix, servaddr: 
+        send_cmd(server, 'PONG :%s' % servaddr))
         
-        xmap(server, CLOSE, lambda server, err: lose(server))
+        server.add_map(CLOSE, lambda server, err: lose(server))
         logcon(server)
 
-        xmap(server, '376', auto_join)
-        xmap(server, '376', get_myaddr)
-        xmap(server, 'NICK', update_nick)
+        server.add_map('376', auto_join)
+        server.add_map('376', get_myaddr)
+        server.add_map('NICK', update_nick)
 
         server.servaddr    = servaddr
         server.port        = port
@@ -62,8 +65,8 @@ def connect(servaddr, port, nick, user, nick_passwd, adm_passwd, chan_list):
         send_cmd(server, 'NICK %s' % nick)
         send_cmd(server, 'USER %s' % user) 
     
-    xmap(server, CONNECT, handle_connect)
-    xmap(server, CONNECT_ERR, lambda server, err: lose(server))
+    server.add_map(CONNECT, handle_connect)
+    server.add_map(CONNECT_ERR, lambda server, err: lose(server))
 
     server.connect_ex((ip, port))
     return server

@@ -14,7 +14,6 @@ Description: Shows the player's rating on lichess.org.
 
 import requests
 from quickirc import send_msg
-from untwisted.network import xmap
 from ameliabot.cmd import command
 
 def getPlayerInfo(player):
@@ -31,7 +30,7 @@ def ircOutput(playerinfo):
 
 class Lichess:
 	def __init__(self,server):
-		xmap(server,'CMSG',self.getinfo)
+		server.add_map('CMSG',self.getinfo)
 
 	@command('@lichess player')
 	def getinfo(self, server, nick, user, host, target, msg, player):

@@ -7,12 +7,11 @@ Used to reconnect if the connection dies.
 
 """
 
-from untwisted.network import xmap
-from untwisted.iostd import CLOSE
+from untwisted.event import CLOSE
 from ameliabot.core import connect
 
 def install(server):
-    xmap(server, CLOSE, reconnect)
+    server.add_map(CLOSE, reconnect)
 
 def reconnect(server, err):
     connect(server.servaddr, server.port, server.nick,

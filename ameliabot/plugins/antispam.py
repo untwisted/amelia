@@ -12,7 +12,6 @@ def PLUGIN_SCHEME(server):
 """
 
 from quickirc import send_cmd, send_msg
-from untwisted.network import xmap
 from ameliabot.cmd import regcmd
 import time
 
@@ -25,7 +24,7 @@ class AntiSpam(object):
             cmd = 'kick {chan} {nick} :Amelia rocks!'
             cmd = 'chanserv akick {chan} add *!*@{host} : get out!
         """
-        xmap(server, 'CMSG', self.watcher)
+        server.add_map('CMSG', self.watcher)
         self.data    = {}
         self.n_lines = n_lines
         self.n_secs  = n_secs

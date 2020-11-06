@@ -1,11 +1,10 @@
-from untwisted.network import xmap
 from quickirc import send_msg
 from ameliabot.cmd import command
 
 known = set()
 
 def install(server):
-    xmap(server, 'PMSG', login)
+    server.add_map('PMSG', login)
 
 @command('@login password')
 def login(server, nick, user, host, target, msg, password):

@@ -24,19 +24,19 @@ Example
 """
 
 from ameliabot.adm import is_adm
-from untwisted.network import xmap
 from quickirc import send_cmd
 from ameliabot.cmd import command
 
 def install(server, *args):
-    xmap(server, 'CMSG', irc_cmd)
-    xmap(server, 'PMSG', irc_cmd)
+    server.add_map('CMSG', irc_cmd)
+    server.add_map('PMSG', irc_cmd)
 
 @command('@irccmd data')
 def irc_cmd(server, nick, user, host, target, msg, data):
     # is_adm(host) checks whether the user is authenticated
     # in order to send back to the server the irc command.
-    if is_adm(host): send_cmd(server, data)
+    if is_adm(host): 
+        send_cmd(server, data)
 
 
 

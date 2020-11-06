@@ -1,8 +1,7 @@
 """
 """
 
-from untwisted.network import xmap
-from random import *
+from random import choice
 from re import split
 from os.path import dirname, join
 from quickirc import send_msg
@@ -15,7 +14,7 @@ class Quote(object):
         fd.close()
         self.data = split('\n+', data)
         
-        xmap(server, 'CMSG', self.send_quote)
+        server.add_map('CMSG', self.send_quote)
 
     @command('@quote')
     def send_quote(self, server, nick, user, host, target, msg):    

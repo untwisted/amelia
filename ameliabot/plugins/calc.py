@@ -20,14 +20,13 @@ Example
 import wolframalpha
 
 from quickirc import send_msg
-from untwisted.network import xmap
 from ameliabot.cmd import regcmd
 from ameliabot.tools import send_lines
 
 class Calculate(object):
     def __init__(self, server, appid):
         self.client = wolframalpha.Client(appid)
-        xmap(server, 'CMSG', self.calculate)
+        server.add_map('CMSG', self.calculate)
     
     @regcmd('@calc (?P<exp>.+)$')
     def calculate(self, server, nick, user, host, target, msg, exp):

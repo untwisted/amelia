@@ -13,10 +13,9 @@ Description: Send file whose name is filename to the nick that issued the comman
 See: booklist plugin for listing shared files.
 """
 
-from untwisted.network import *
-from untwisted.iostd import CLOSE, CONNECT_ERR
-from quickirc import *
+from quickirc import DccServer, send_msg
 from untwisted.iputils import ip_to_long
+from untwisted.event import DONE, ACCEPT_ERR, TIMEOUT, CLOSE
 from os.path import getsize, join
 from socket import error
 from ameliabot.cmd import command
@@ -26,7 +25,7 @@ HEADER = '\001DCC SEND %s %s %s %s\001'
 class Send(object):
     def __init__(self, server, folder):
         self.folder = folder
-        xmap(server, 'CMSG', self.dcc_send)
+        server.add_map('CMSG', self.dcc_send)
 
     @command('@dcc-send filename port')
     def dcc_send(self, server, nick, user, host, target, msg, filename, port):
@@ -48,9 +47,9 @@ class Send(object):
                 send_msg(server, nick, msg)
                 fd.close()
         
-            xmap(dccserv, DONE, is_done, 'Done.')
-            xmap(dccserv, CLOSE, lambda dccserv, client, err: is_done(dccserv, client, 'Failed.'))
-            xmap(dccserv, ACCEPT_ERR, lambda dccserv, err: is_done(dccserv, None, "Accept error."))
+            dccserv.add_map(DONE, is_done, 'Done.')
+            dccserv.add_map(CLOSE, lambda dccserv, client, err: is_done(dccserv, client, 'Failed.'))
+            dccserv.add_map(ACCEPT_ERR, lambda dccserv, err: is_done(dccserv, None, "Accept error."))
         
             # TIMEOUT is an event that occurs in the dccsev spin
             # instance not in the client instance.
@@ -58,7 +57,7 @@ class Send(object):
             # corresponds to the client socket. So, we need to pass
             # None otherwise we get an exception. The None would correspond
             # to client in the position at is_done.
-            xmap(dccserv, TIMEOUT, is_done, None, "TIMEOUT. Server is down.")
+            dccserv.add_map(TIMEOUT, is_done, None, "TIMEOUT. Server is down.")
         
         
 install = Send

@@ -16,7 +16,6 @@ Description Show the help for the plugin.
 """
 
 from ameliabot.tools import send_lines
-from untwisted.network import xmap
 from ameliabot.cmd import command
 from pkgutil import iter_modules
 import ameliabot.plugins
@@ -24,8 +23,8 @@ import os.path
 
 class Help(object):
     def __init__(self, server):
-        xmap(server, 'PMSG', self.plugins)
-        xmap(server, 'PMSG', self.send_doc)
+        server.add_map('PMSG', self.plugins)
+        server.add_map('PMSG', self.send_doc)
     
     @command('@plugins')
     def plugins(self, server, nick, user, host, target, msg):
