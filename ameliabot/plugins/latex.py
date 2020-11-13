@@ -19,14 +19,13 @@ Example
 
 
 from quickirc import send_msg
-from untwisted.network import xmap
 from ameliabot.cmd import regcmd
 from ameliabot.tools import send_lines
 from liblax.parser import run
 
 class LatexBuilder(object):
     def __init__(self, server):
-        xmap(server, 'CMSG', self.build)
+        server.add_map('CMSG', self.build)
     
     @regcmd('@lax (?P<exp>.+)$')
     def build(self, server, nick, user, 

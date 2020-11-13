@@ -1,6 +1,5 @@
 from time import asctime
 from random import choice, randint
-from untwisted.network import xmap
 from quickirc import send_msg
 from untwisted.timer import Timer
 import os
@@ -17,8 +16,8 @@ class Advisor(object):
         self.pmed_file      = pmed_file
         self.blacklist      = self.load(blacklist_file)
         self.blacklist_file = blacklist_file
-        xmap(server, 'JOIN', self.send_question)
-        xmap(server, 'PMSG', self.check_answer)
+        server.add_map('JOIN', self.send_question)
+        server.add_map('PMSG', self.check_answer)
 
     def load(self, filename):
         with open(filename, 'a+') as fd:
