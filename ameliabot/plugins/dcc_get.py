@@ -40,8 +40,8 @@ class Get(object):
                 fd.close()
     
             dccclient.add_map(DONE, is_done, 'Done.')
-            dccclient.add_map(CLOSE, lambda dccclient, spin, err: is_done(spin, 'Failed.'))
-            dccclient.add_map(CONNECT_ERR, lambda dccclient, spin, err: is_done("It couldn't connect."))
+            dccclient.add_map(CLOSE, lambda dccclient, ssock, err: is_done(ssock, 'Failed.'))
+            dccclient.add_map(CONNECT_ERR, lambda dccclient, ssock, err: is_done("It couldn't connect."))
     
     
 install = Get

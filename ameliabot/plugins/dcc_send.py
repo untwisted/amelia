@@ -51,9 +51,9 @@ class Send(object):
             dccserv.add_map(CLOSE, lambda dccserv, client, err: is_done(dccserv, client, 'Failed.'))
             dccserv.add_map(ACCEPT_ERR, lambda dccserv, err: is_done(dccserv, None, "Accept error."))
         
-            # TIMEOUT is an event that occurs in the dccsev spin
+            # TIMEOUT is an event that occurs in the dccsev ssock
             # instance not in the client instance.
-            # The client instance is the spin instance that
+            # The client instance is the ssock instance that
             # corresponds to the client socket. So, we need to pass
             # None otherwise we get an exception. The None would correspond
             # to client in the position at is_done.

@@ -1,5 +1,5 @@
 from socket import socket, AF_INET, SOCK_STREAM, socket, gethostbyname
-from untwisted.network import Spin
+from untwisted.network import SuperSocket
 from untwisted.client import Client
 from untwisted.sock_writer import SockWriter
 from untwisted.event import CLOSE, CONNECT_ERR, CONNECT
@@ -12,7 +12,7 @@ from untwisted.tools import coroutine
 def connect(servaddr, port, nick, user, nick_passwd, adm_passwd, chan_list):
     sock   = socket(AF_INET, SOCK_STREAM)
     ip     = gethostbyname(servaddr)
-    server = Spin(sock)
+    server = SuperSocket(sock)
     Client(server)
 
     def auto_join(server, *args):
