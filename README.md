@@ -188,6 +188,7 @@ The command format scheme follows the following scheme.
 
 ~~~
 @command arg1 arg2 ... arg_n 'argument with spaces' "argument with spaces"
+~~~
 
 ## Command Help
 
