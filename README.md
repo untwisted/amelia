@@ -216,6 +216,6 @@ to be issued as a private message.
 ~~~
 
 Once the user is logged, amelia will keep the user's host in memory. Whenever an user
-issues a command that demands to be authentication, amelia will check the user host.
+issues a command that demands authentication, amelia will check the user host.
 
 
