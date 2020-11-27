@@ -12,7 +12,6 @@ Description: List all files that exist in a given folder that was shared.
 
 """
 
-import libpad
 from quickirc import send_msg
 from ameliabot.cmd import command
 import os
@@ -30,14 +29,5 @@ class BookList(object):
         """
         """
         content = '\n'.join(os.listdir(self.folder))
-    
-        url, _ = libpad.sandbox(content, '') 
-        send_msg(server, target, url)
+        send_msg(server, target, content)
         
-
-
-
-
-
-
-

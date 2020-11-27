@@ -1,6 +1,6 @@
-from socket import socket, AF_INET, SOCK_STREAM, socket, gethostbyname
+from socket import socket, AF_INET, SOCK_STREAM, gethostbyname
 from untwisted.network import SuperSocket
-from untwisted.client import Client
+from untwisted.client import Client, lose
 from untwisted.sock_writer import SockWriter
 from untwisted.event import CLOSE, CONNECT_ERR, CONNECT
 from untwisted.sock_reader import SockReader
