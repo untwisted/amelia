@@ -18,24 +18,22 @@ Example
 
 """
 
-import libpad
+from pytio import Tio, TioRequest
 from quickirc import send_msg
-from untwisted.network import xmap
 from ameliabot.cmd import regcmd
 
+tio = Tio()
 class Codebox(object):
-    def __init__(self, server, max_width=512 * 3):
-        self.max_width = max_width
-        xmap(server, 'CMSG', self.run)
+    def __init__(self, server, max_length=512 * 3):
+        self.max_length = max_length
+        server.add_map('CMSG', self.run)
 
     @regcmd('@run (?P<lang>[^ ]+) (?P<code>.+)')
     def run(self, server, nick, user, host, target, msg, lang, code):
-        url, output = libpad.sandbox(code, lang)
-
-        if len(output) <= self.max_width:
-            send_msg(server, target, output)
-        else:
-            send_msg(server, target, url)
+        request = TioRequest(lang=lang, code=code)
+        response = tio.send(request)
+        print('code:', code)
+        send_msg(server, target, response.result[:self.max_length])
 
 
 install = Codebox

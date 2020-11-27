@@ -15,16 +15,15 @@ Description: Remove the pipe from chan_x to chan_y.
 
 """
 
-from untwisted.network import xmap
 from quickirc import send_msg
 from ameliabot.cmd import command
 
 mapping = dict()
 
 def install(server):
-    xmap(server, 'CMSG', pipe_add)
-    xmap(server, 'CMSG', pipe_rm)
-    xmap(server, 'CMSG', pipe_chan)
+    server.add_map('CMSG', pipe_add)
+    server.add_map('CMSG', pipe_rm)
+    server.add_map('CMSG', pipe_chan)
 
 @command('@pipe-add chan_x chan_y')
 def pipe_add(server, nick, user, host, target, 

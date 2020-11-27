@@ -12,14 +12,13 @@ Description: Translate the data from lang1 to lang2.
 """
 
 from libdict import GoogleTranslator
-from untwisted.network import xmap
 from quickirc import send_msg
 from ameliabot.cmd import regcmd
 
 class Translator(object):
     def __init__(self, server):
         self.google_translator = GoogleTranslator()
-        xmap(server, 'CMSG', self.translate)
+        server.add_map('CMSG', self.translate)
 
     @regcmd('@g (?P<lang1>.+?) (?P<lang2>.+?) (?P<data>.+)$')
     def translate(self, server, nick, user, host, target, msg, lang1, lang2, data):

@@ -13,12 +13,11 @@ Description: Instructs the bot to send a note to person.
 """
 
 from quickirc import send_msg
-from untwisted.network import xmap
 from ameliabot.cmd import command
 
 def install(server):
-    xmap(server, 'CMSG', send)
-    xmap(server, 'PMSG', send)
+    server.add_map('CMSG', send)
+    server.add_map('PMSG', send)
 
 @command('@tell person note')
 def send(server, nick, user, host, target, msg, person, note):

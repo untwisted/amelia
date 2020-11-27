@@ -13,7 +13,6 @@ Description: Show how long a nick has been inactive.
 """
 
 from quickirc import send_msg
-from untwisted.network import xmap
 from ameliabot.cmd import command
 import time
 
@@ -21,8 +20,8 @@ class Seen(object):
     def __init__(self, server):
         self.database = dict()
 
-        xmap(server, 'CMSG', self.record)
-        xmap(server, 'CMSG', self.check)
+        server.add_map('CMSG', self.record)
+        server.add_map('CMSG', self.check)
 
     def record(self, server, nick, user, host, target, msg):
         self.database[nick.lower()] = time.time()

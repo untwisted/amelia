@@ -8,7 +8,6 @@ Used to extract url titles from links.
 
 from quickirc import send_msg
 from re import search, compile, sub
-from untwisted.network import xmap
 import requests
 from ehp import *
 
@@ -17,7 +16,7 @@ REG_LINK  = compile(STR_LINK)
 
 class UrlTitle(object):
     def __init__(self, server):
-        xmap(server, 'CMSG', self.check)
+        server.add_map('CMSG', self.check)
     
     def check(self, server, nick, user, host, target, msg):
         struct = search(REG_LINK, msg)

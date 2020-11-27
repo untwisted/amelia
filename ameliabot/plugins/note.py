@@ -15,9 +15,6 @@ Description: Remove a note from a nick.
 """
 
 from collections import namedtuple, defaultdict
-
-from untwisted.network import xmap
-
 from quickirc import send_msg
 from ameliabot.cmd import command, regcmd
 
@@ -29,9 +26,9 @@ Message = namedtuple('Message', ('source', 'message'))
 
 class Note(object):
     def __init__(self, server):
-        xmap(server, 'CMSG', self.note_add)
-        xmap(server, 'CMSG', self.note_del)
-        xmap(server, 'JOIN', self.send_note)
+        server.add_map('CMSG', self.note_add)
+        server.add_map('CMSG', self.note_del)
+        server.add_map('JOIN', self.send_note)
         self.base = defaultdict(list)
 
     @regcmd(r'@note-add\s+(?P<peer>\S+)\s+(?P<data>.*)')

@@ -9,7 +9,6 @@ it makes the bot laught as well.
 from quickirc import send_msg
 from re import search, compile
 from random import choice, randint
-from untwisted.network import xmap
 
 class Troll(object):
     def __init__(self, server, letters, min, max):
@@ -17,7 +16,7 @@ class Troll(object):
         self.max     = max
         self.min     = min
         self.pattern = compile('[%s]{%s,%s}' % (letters, min, max))
-        xmap(server, 'CMSG', self.check_msg)
+        server.add_map('CMSG', self.check_msg)
 
     def check_msg(self, server, nick, user, host, target, msg):
         if search(self.pattern, msg): 

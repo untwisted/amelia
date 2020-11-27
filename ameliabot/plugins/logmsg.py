@@ -7,7 +7,6 @@ Used to log msgs into a folder.
 """
 
 from time import asctime
-from untwisted.network import xmap
 from os.path import join
 
 class LogMsg(object):
@@ -21,8 +20,8 @@ class LogMsg(object):
         """
 
         self.folder = folder
-        xmap(server, 'CMSG', self.store_chan)
-        xmap(server, 'PMSG', self.store_user)
+        server.add_map('CMSG', self.store_chan)
+        server.add_map('PMSG', self.store_user)
 
     def store_chan(self, server, nick, user, host, target, msg):
         with open(join(self.folder, target), 'a+') as fd:

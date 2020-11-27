@@ -1,5 +1,4 @@
 from quickirc import send_msg
-from untwisted.network import xmap
 from ameliabot.cmd import regcmd
 from liblax.parser import run
 import urllib.request, urllib.parse, urllib.error
@@ -22,7 +21,7 @@ def post(data, title, name):
 
 class Mathb(object):
     def __init__(self, server):
-        xmap(server, 'CMSG', self.build)
+        server.add_map('CMSG', self.build)
     
     @regcmd('@mathb (?P<exp>.+)$')
     def build(self, server, nick, user, 
