@@ -25,8 +25,10 @@ ameliabot/plugins/help.py
 ameliabot/plugins/ircadm.py
 ameliabot/plugins/join.py
 ameliabot/plugins/keep_alive.py
+ameliabot/plugins/latex.py
 ameliabot/plugins/lichess.py
 ameliabot/plugins/logmsg.py
+ameliabot/plugins/mathb.py
 ameliabot/plugins/note.py
 ameliabot/plugins/pipe.py
 ameliabot/plugins/polyglot.py

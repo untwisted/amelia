@@ -3,7 +3,7 @@
 from distutils.core import setup
 
 setup(name="ameliabot",
-      version="2.1.0",
+      version="2.1.1",
       packages=["ameliabot", 
                 "ameliabot.plugins",
                 'ameliabot.plugins.quote'],

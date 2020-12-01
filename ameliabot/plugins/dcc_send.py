@@ -15,7 +15,7 @@ See: booklist plugin for listing shared files.
 
 from quickirc import DccServer, send_msg
 from untwisted.iputils import ip_to_long
-from untwisted.event import DONE, ACCEPT_ERR, TIMEOUT, CLOSE
+from untwisted.event import DONE, TIMEOUT, CLOSE
 from os.path import getsize, join
 from socket import error
 from ameliabot.cmd import command
@@ -49,7 +49,6 @@ class Send(object):
         
             dccserv.add_map(DONE, is_done, 'Done.')
             dccserv.add_map(CLOSE, lambda dccserv, client, err: is_done(dccserv, client, 'Failed.'))
-            dccserv.add_map(ACCEPT_ERR, lambda dccserv, err: is_done(dccserv, None, "Accept error."))
         
             # TIMEOUT is an event that occurs in the dccsev ssock
             # instance not in the client instance.
