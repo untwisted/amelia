@@ -1,4 +1,4 @@
-untwisted>=3.0.0
+untwisted>=3.2.1
 quickirc>=1.2.0
 ehp==2.0.1
 pytio
